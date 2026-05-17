@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   parse_file.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 15:55:27 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:55:28 by ealbino          ###   ########.fr       */
+/*   Created: 2026/05/14 15:53:39 by ealbino           #+#    #+#             */
+/*   Updated: 2026/05/14 15:53:43 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef PARSE_FILE_H
+# define PARSE_FILE_H
+# include <stdbool.h>
+# include <string.h>
+# include <fcntl.h>
 
-# include "libft.h"
-# include "parse/parse_file.h"
-# include "parse/parse_texture.h"
-# include "parse/parse_color.h"
-# include "get_next_line/get_next_line.h"
-# include "utils/utils.h"
-# include "error/error.h"
-# include <stdio.h>
-# include <errno.h>
+typedef struct s_file
+{
+    int fd;
+    int line_count;
+    t_list  *lines;
+}   t_file;
+
+bool	validate_extension(char *filename, char *xtens);
+bool	check_file(const char *pathname, t_file *file);
 
 #endif

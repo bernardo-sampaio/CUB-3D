@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 15:55:27 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:55:28 by ealbino          ###   ########.fr       */
+/*   Created: 2025/11/28 22:26:07 by ealbino           #+#    #+#             */
+/*   Updated: 2025/12/01 00:45:45 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "libft.h"
-# include "parse/parse_file.h"
-# include "parse/parse_texture.h"
-# include "parse/parse_color.h"
-# include "get_next_line/get_next_line.h"
-# include "utils/utils.h"
-# include "error/error.h"
-# include <stdio.h>
-# include <errno.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char	*get_next_line(int fd);
 
 #endif

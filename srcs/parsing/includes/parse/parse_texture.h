@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   parse_texture.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 15:55:27 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:55:28 by ealbino          ###   ########.fr       */
+/*   Created: 2026/05/17 18:32:19 by ealbino           #+#    #+#             */
+/*   Updated: 2026/05/17 18:32:22 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef PARSE_TEXTURE_H
+# define PARSE_TEXTURE_H
 
-# include "libft.h"
-# include "parse/parse_file.h"
-# include "parse/parse_texture.h"
-# include "parse/parse_color.h"
-# include "get_next_line/get_next_line.h"
-# include "utils/utils.h"
-# include "error/error.h"
-# include <stdio.h>
-# include <errno.h>
+typedef struct s_texture
+{
+    char    *north_text;
+    char    *south_text;
+    char    *west_text;
+    char    *east_text;
+} t_texture;
+
+bool check_texture(t_file *file, t_texture *texture_dir);
 
 #endif

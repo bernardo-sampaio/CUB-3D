@@ -6,7 +6,7 @@
 #    By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2025/12/10 06:30:59 by ealbino          ###   ########.fr        #
+#    Updated: 2026/05/15 19:48:25 by ealbino          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,19 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 HEADER       = includes/core/cub3d.h
 OBJS = \
 	cub3d.o \
+	get_next_line.o \
 	parse_file.o \
+	parse_color.o \
+	parse_texture.o \
 	error/error.o \
+	utils/utils.o \
+	utils/cleanup.o
 
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) bonus -C $(LIBFT_DIR)
 
 $(OBJS): $(HEADER)
 

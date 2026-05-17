@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.h                                       :+:      :+:    :+:   */
+/*   parse_color.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 15:53:39 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:53:43 by ealbino          ###   ########.fr       */
+/*   Created: 2026/05/17 18:32:09 by ealbino           #+#    #+#             */
+/*   Updated: 2026/05/17 18:32:10 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_FILE_H
-# define PARSE_FILE_H
-# include "libft.h"
-# include <stdbool.h>
+#ifndef PARSE_COLOR_H
+# define PARSE_COLOR_H
 
-bool    is_dotcub(char *str);
+typedef struct s_color
+{
+    int *floor_rgb;
+    int *ceiling_rgb;
+} t_color;
+
+bool check_color(t_file *file, t_color *color);
 
 #endif
