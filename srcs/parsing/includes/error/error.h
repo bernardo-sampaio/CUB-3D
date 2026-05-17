@@ -13,8 +13,6 @@
 #ifndef ERROR_H
 # define ERROR_H
 
-# include <stdio.h>
-
 void    error_msg(char *msg);
 
 #endif
