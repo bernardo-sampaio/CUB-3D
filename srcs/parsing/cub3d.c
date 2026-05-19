@@ -12,12 +12,14 @@
 
 #include "core/cub3d.h"
 
+
 int	main(int ac, char **av)
 {
 	(void)av;
 	t_file	file;
 	t_texture	texture_dir;
 	t_color	color;
+	t_map	map;
 
 	if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
@@ -41,8 +43,17 @@ int	main(int ac, char **av)
 		free_color(&color);
 		return (1);
 	}
+	ft_memset(&map, 0, sizeof(t_map));
+	if (check_map(&file, &map) == false)
+	{
+		ft_lstclear(&file.lines, free);
+		free_texture(&texture_dir);
+		free_color(&color);
+		return (1);
+	}
 	ft_lstclear(&file.lines, free);
 	free_texture(&texture_dir);
 	free_color(&color);
+	free_mat(map.grid);
 	return (0);
 }
