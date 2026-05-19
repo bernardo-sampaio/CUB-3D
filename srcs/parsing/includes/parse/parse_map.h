@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:08:24 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 14:09:24 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:03:33 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 
 typedef struct s_map
 {
-    char **grid;
-    int width;
-    int height;
-} t_map;
+	char	**grid;
+	int		width;
+	int		height;
+}	t_map;
 
-bool check_map(t_file *file, t_map *map);
+bool	check_map(t_file *file, t_map *map);
 
 #endif
-
-
-

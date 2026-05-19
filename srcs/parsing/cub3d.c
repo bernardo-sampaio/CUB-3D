@@ -6,16 +6,14 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:04:55 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 16:07:53 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:05:49 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/cub3d.h"
 
-
 int	main(int ac, char **av)
 {
-	(void)av;
 	t_file	file;
 	t_texture	texture_dir;
 	t_color	color;

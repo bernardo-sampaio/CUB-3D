@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:45:18 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:45:21 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:06:31 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	validate_extension(char *filename, char *xtens)
 {
 	char	*after_dot;
 
-    after_dot = ft_strrchr(filename, '.');
+	after_dot = ft_strrchr(filename, '.');
 	if (ft_strcmp(after_dot, xtens) == 0)
 		return (true);
 	return (false);

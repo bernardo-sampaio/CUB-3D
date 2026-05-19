@@ -6,14 +6,14 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:27:01 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 16:27:24 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:04:20 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/cub3d.h"
 
-void    error_msg(char *msg)
+void	error_msg(char *msg)
 {
-    ft_putendl_fd("Error: ", 2);
-    ft_putendl_fd(msg, 2);
+	ft_putendl_fd("Error: ", 2);
+	ft_putendl_fd(msg, 2);
 }
