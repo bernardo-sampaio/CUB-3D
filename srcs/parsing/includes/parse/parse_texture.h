@@ -19,8 +19,9 @@ typedef struct s_texture
 	char	*south_text;
 	char	*west_text;
 	char	*east_text;
-}	t_texture;
+}			t_texture;
 
-bool	check_texture(t_file *file, t_texture *texture_dir);
+bool		identify_direction(char *s);
+bool		check_texture(t_file *file, t_texture *texture_dir);
 
 #endif

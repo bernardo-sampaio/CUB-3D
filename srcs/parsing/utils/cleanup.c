@@ -27,13 +27,13 @@ void	free_mat(char **mat)
 void	free_texture(t_texture *texture_dir)
 {
 	free(texture_dir->north_text);
-    free(texture_dir->south_text);
-    free(texture_dir->west_text);
-    free(texture_dir->east_text);
+	free(texture_dir->south_text);
+	free(texture_dir->west_text);
+	free(texture_dir->east_text);
 }
 
 void	free_color(t_color *color)
 {
 	free(color->floor_rgb);
-    free(color->ceiling_rgb);
+	free(color->ceiling_rgb);
 }

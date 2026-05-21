@@ -12,19 +12,17 @@
 
 #include "core/cub3d.h"
 
-static bool identify_direction(char *s)
+bool	identify_direction(char *s)
 {
-	if (ft_strcmp(s, "NO") == 0
-		|| ft_strcmp(s, "SO") == 0
-		|| ft_strcmp(s, "WE") == 0
-		|| ft_strcmp(s, "EA") == 0)
+	if (ft_strcmp(s, "NO") == 0 || ft_strcmp(s, "SO") == 0 || ft_strcmp(s,
+			"WE") == 0 || ft_strcmp(s, "EA") == 0)
 	{
 		return (true);
 	}
 	return (false);
 }
 
-static char    *remove_breakline(char *pathname)
+static char	*remove_breakline(char *pathname)
 {
 	char	*new;
 	int		i;
@@ -55,9 +53,10 @@ static bool	open_file(const char *pathname)
 	return (true);
 }
 
-static void init_texture(char *direction, char *pathname, t_texture *texture_dir)
+static void	init_texture(char *direction, char *pathname,
+		t_texture *texture_dir)
 {
-	if (ft_strcmp(direction, "NO") == 0)
+	if (ft_strcmp(direction, "NO\n") == 0)
 		texture_dir->north_text = ft_strdup(pathname);
 	else if (ft_strcmp(direction, "SO") == 0)
 		texture_dir->south_text = ft_strdup(pathname);
@@ -86,7 +85,8 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 				free_mat(mat);
 				return (error_msg("Duplicate directions"), false);
 			}
-			if (mat[1][0] == '\n' || (mat[2] && is_only_whitespace(mat[2]) == false))
+			if (mat[1][0] == '\n' || (mat[2]
+					&& is_only_whitespace(mat[2]) == false))
 			{
 				free_mat(mat);
 				return (error_msg("Invalid pathname"), false);
@@ -96,7 +96,8 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 			{
 				free_mat(mat);
 				free(pathname);
-				return (error_msg("Invalid file extension. Expected .xpm\n"), false);
+				return (error_msg("Invalid file extension. Expected .xpm\n"),
+					false);
 			}
 			if (open_file(pathname) == false)
 			{

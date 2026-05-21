@@ -12,24 +12,24 @@
 
 #include "core/cub3d.h"
 
-int     ft_strcmp(const char *s1, const char *s2)
- {
-    int     i; 
-    
-    if (!s1 && !s2)
-        return (0);
-    if (!s1 && s2)
-        return (-1);
-    if (s1 && !s2)
-        return (1);
-    i = 0;
-    while (s1[i] && s2[i])
-    {
-        if (s1[i] != s2[i])
-            return (s1[i] - s2[i]);
-        i++;
-    }
-    return (s1[i] - s2[i]);
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	if (!s1 && !s2)
+		return (0);
+	if (!s1 && s2)
+		return (-1);
+	if (s1 && !s2)
+		return (1);
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }
 
 bool	is_only_whitespace(char *str)
@@ -41,13 +41,9 @@ bool	is_only_whitespace(char *str)
 		return (true);
 	while (str[i])
 	{
-		if (str[i] != ' '
-			&& str[i] != '\n'
-			&& str[i] != '\t'
-			&& str[i] != '\r'
-			&& str[i] != '\v'
-			&& str[i] != '\f')
-				return (false);
+		if (str[i] != ' ' && str[i] != '\n' && str[i] != '\t' && str[i] != '\r'
+			&& str[i] != '\v' && str[i] != '\f')
+			return (false);
 		i++;
 	}
 	return (true);

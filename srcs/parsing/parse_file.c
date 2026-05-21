@@ -24,7 +24,7 @@ bool	validate_extension(char *filename, char *xtens)
 
 static bool	open_file(const char *pathname, t_file *file)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd == -1)

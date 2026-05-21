@@ -15,18 +15,20 @@
 
 typedef struct s_tiles
 {
-	int	player;
-	int	exit;
-}	t_tiles;
+	int		player;
+	int		exit;
+}			t_tiles;
 
 typedef struct s_map
 {
-	t_tiles		tiles;
+	t_tiles	tiles;
 	char	**grid;
 	int		width;
 	int		height;
-}	t_map;
+}			t_map;
 
-bool	check_map(t_file *file, t_map *map);
+bool		is_map_line(char *line);
+bool		ft_isspace(int c);
+bool		check_map(t_file *file, t_map *map);
 
 #endif

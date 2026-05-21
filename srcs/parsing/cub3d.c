@@ -12,12 +12,36 @@
 
 #include "core/cub3d.h"
 
+static bool	final_check(t_file file)
+{
+	t_list	*head;
+	char	**mat;
+	char	*line;
+
+	head = file.lines;
+	while (head)
+	{
+		line = (char *)head->content;
+		mat = ft_split(line, 32);
+		if (line[0] != 'F' && line[0] != 'C' != 0
+			&& identify_direction(mat[0]) == false && !is_map_line(line)
+			&& !is_only_whitespace(line))
+		{
+			free_mat(mat);
+			return (error_msg("Invalid line in the file"), false);
+		}
+		head = head->next;
+	}
+	free_mat(mat);
+	return (true);
+}
+
 int	main(int ac, char **av)
 {
-	t_file	file;
+	t_file		file;
 	t_texture	texture_dir;
-	t_color	color;
-	t_map	map;
+	t_color		color;
+	t_map		map;
 
 	if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
@@ -47,6 +71,14 @@ int	main(int ac, char **av)
 		ft_lstclear(&file.lines, free);
 		free_texture(&texture_dir);
 		free_color(&color);
+		return (1);
+	}
+	if (final_check(file) == false)
+	{
+		ft_lstclear(&file.lines, free);
+		free_texture(&texture_dir);
+		free_color(&color);
+		free_mat(map.grid);
 		return (1);
 	}
 	ft_lstclear(&file.lines, free);
