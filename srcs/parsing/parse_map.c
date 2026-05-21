@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:07:42 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/21 11:57:51 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/05/21 14:45:40 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ static bool	after_map(t_list *map)
 	while (grasp)
 	{
 		if (is_map_line((char *)grasp->content))
-			return (error_msg("Invalid map format: non-map line found after map lines"),
-				false);
+		{
+			error_msg("Invalid map format: non-map line found after map lines");
+			return (false);
+		}
 		else if (is_only_whitespace((char *)grasp->content) == false)
-			return (error_msg("Invalid map format: non-map line found after map lines"),
-				false);
+		{
+			error_msg("Invalid map format: non-map line found after map lines");
+			return (false);
+		}
 		grasp = grasp->next;
 	}
 	return (true);
@@ -75,7 +79,6 @@ static bool	load_grid(t_file *file, t_map *map)
 	map->grid = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->grid)
 		return (error_msg("Memory allocation failed"), false);
-			// should we use strerror here?
 	map->width = 0;
 	index = 0;
 	head = file->lines;
@@ -90,7 +93,7 @@ static bool	load_grid(t_file *file, t_map *map)
 				return (error_msg("Memory allocation failed"), false);
 			}
 			if ((int)ft_strlen(map->grid[index]) > map->width)
-				map->width = ft_strlen(map->grid[index]) - 1; //-1 to ignore the newline character
+				map->width = ft_strlen(map->grid[index]) - 1;
 			index++;
 		}
 		else if (index > 0)
@@ -103,14 +106,16 @@ static bool	load_grid(t_file *file, t_map *map)
 
 static bool	normalize_grid(t_map *map)
 {
-	int	i;
+	char	*normalized_line;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < map->height)
 	{
-		if ((int)ft_strlen(map->grid[i]) - 1 < map->width) //-1 to ignore the newline character
+		if ((int)ft_strlen(map->grid[i]) - 1 < map->width)
 		{
-			char *normalized_line = ft_calloc(map->width + 2, sizeof(char)); //+2 for newline and null terminator
+			normalized_line = ft_calloc(map->width + 2, sizeof(char));
 			if (normalized_line == NULL)
 			{
 				free(normalized_line);
@@ -119,8 +124,12 @@ static bool	normalize_grid(t_map *map)
 			}
 			ft_strlcpy(normalized_line, map->grid[i], ft_strlen(map->grid[i])
 				+ 1);
-			for (int j = ft_strlen(map->grid[i]) - 1; j < map->width; j++)
+			j = ft_strlen(map->grid[i]) - 1;
+			while (j < map->width)
+			{
 				normalized_line[j] = ' ';
+				j++;
+			}
 			normalized_line[map->width] = '\n';
 			normalized_line[map->width + 1] = '\0';
 			free(map->grid[i]);
@@ -271,9 +280,6 @@ static bool	is_surrounded_by_walls(t_map *map)
 
 bool	check_map(t_file *file, t_map *map)
 {
-	char	**v;
-	int		i;
-
 	map->height = count_map_lines(file);
 	if (map->height == 0)
 		return (error_msg("No map found in the file"), false);
@@ -293,12 +299,5 @@ bool	check_map(t_file *file, t_map *map)
 	}
 	if (is_surrounded_by_walls(map) == false)
 		return (false);
-	v = map->grid;
-	i = 0;
-	while (v[i])
-	{
-		printf("%s", v[i]);
-		i++;
-	}
 	return (true);
 }

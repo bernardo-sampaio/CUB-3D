@@ -120,6 +120,10 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 bool	check_texture(t_file *file, t_texture *texture_dir)
 {
 	if (extract_path(file, texture_dir) == false)
+	{
+		ft_lstclear(&file->lines, free);
+		free_texture(texture_dir);
 		return (false);
+	}
 	return (true);
 }

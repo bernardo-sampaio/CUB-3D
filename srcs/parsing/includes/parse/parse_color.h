@@ -17,7 +17,7 @@ typedef struct s_color
 {
 	int	*floor_rgb;
 	int	*ceiling_rgb;
-}	t_color;
+}		t_color;
 
 bool	check_color(t_file *file, t_color *color);
 

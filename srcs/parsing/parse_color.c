@@ -217,6 +217,10 @@ static bool	extract_ident(t_file *file, t_color *color)
 bool	check_color(t_file *file, t_color *color)
 {
 	if (extract_ident(file, color) == false)
+	{
+		ft_lstclear(&file->lines, free);
+		free_color(color);
 		return (false);
+	}
 	return (true);
 }

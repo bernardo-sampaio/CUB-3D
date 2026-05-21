@@ -12,18 +12,18 @@
 
 #ifndef PARSE_FILE_H
 # define PARSE_FILE_H
+# include <fcntl.h>
 # include <stdbool.h>
 # include <string.h>
-# include <fcntl.h>
 
 typedef struct s_file
 {
 	t_list	*lines;
 	int		fd;
 	int		line_count;
-}	t_file;
+}			t_file;
 
-bool	validate_extension(char *filename, char *xtens);
-bool	check_file(const char *pathname, t_file *file);
+bool		validate_extension(char *filename, char *xtens);
+bool		check_file(const char *pathname, t_file *file);
 
 #endif

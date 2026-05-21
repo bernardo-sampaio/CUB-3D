@@ -13,15 +13,23 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "error/error.h"
+# include "get_next_line/get_next_line.h"
 # include "libft.h"
 # include "parse/parse_file.h"
-# include "parse/parse_texture.h"
 # include "parse/parse_color.h"
 # include "parse/parse_map.h"
-# include "get_next_line/get_next_line.h"
+# include "parse/parse_texture.h"
 # include "utils/utils.h"
-# include "error/error.h"
-# include <stdio.h>
 # include <errno.h>
+# include <stdio.h>
+
+typedef struct s_cub3d
+{
+	t_file		file;
+	t_texture	texture;
+	t_color		color;
+	t_map		map;
+}				t_cub3d;
 
 #endif
