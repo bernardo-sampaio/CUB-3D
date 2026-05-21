@@ -13,8 +13,15 @@
 #ifndef PARSE_MAP_H
 # define PARSE_MAP_H
 
+typedef struct s_tiles
+{
+	int	player;
+	int	exit;
+}	t_tiles;
+
 typedef struct s_map
 {
+	t_tiles		tiles;
 	char	**grid;
 	int		width;
 	int		height;
