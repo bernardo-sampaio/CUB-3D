@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:42:14 by bsampaio          #+#    #+#              #
-#    Updated: 2026/05/25 13:32:58 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/05/25 13:51:16 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ GNL_DIR = get_next_line
 LIBFT_DIR = $(GNL_DIR)/Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		src/raycasting_map.c src/init_player_position.c src/render.c src/main.c
+		src/raycasting_map.c src/init_player_position.c src/render.c src/main.c \
+		src/dda.c
 	  
 OBJS = $(SRCS:.c=.o)
 

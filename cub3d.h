@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 13:30:58 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:48:26 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ typedef struct s_cub
 
 char    **ft_get_map(t_player *player, char *file);
 void    initialize_player(t_player *player);
-int    render_frame(t_cub *cub, t_player *player);
+int     render_frame(t_cub *cub, t_player *player);
 void    calculate_raydir(t_player *player, int x, int widthscreen);
+void    setup_dda(t_player *player);
+void    ft_dda(t_player *player);
+void    calculate_walldist(t_player *player);
+
 #endif

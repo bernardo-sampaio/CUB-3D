@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/24 17:37:59 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:46:45 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int    render_frame(t_cub *cub, t_player *player)
     while (x < WIDTH)
     {
         calculate_raydir(player, x, WIDTH);
+        setup_dda(player);
+        ft_dda(player);
+        calculate_walldist(player);
         y = 0;
         while (y < HEIGHT)
         {
