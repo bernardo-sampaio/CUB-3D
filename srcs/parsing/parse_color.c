@@ -48,6 +48,17 @@ static bool	validate_range(char **mat)
 	return (true);
 }
 
+static bool	after_space(char **mat, int i, int j)
+{
+	while (mat[i][j])
+	{
+		if (mat[i][j] != ' ' && mat[i][j] != '\n' && mat[i][j] != ',')
+			return (false);
+		j++;
+	}
+	return (true);
+}
+
 static bool	all_digit(char **mat)
 {
 	int	i;
@@ -60,8 +71,15 @@ static bool	all_digit(char **mat)
 		while (mat[i][j])
 		{
 			if (ft_isdigit(mat[i][j]) != 1 && mat[i][j] != '\n')
-				if (j != 0 && ft_isdigit(mat[i][j - 1]))
+			{
+				if (j != 0 && ft_isdigit(mat[i][j]) != 1 && mat[i][j] != ' ')
 					return (false);
+				if (mat[i][j] == ' ' && after_space(mat, i, j) == false)
+				{
+					if (j != 0 && ft_isdigit(mat[i][j - 1]))
+						return (false);
+				}
+			}
 			j++;
 		}
 		i++;

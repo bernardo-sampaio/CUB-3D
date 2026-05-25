@@ -12,6 +12,11 @@
 
 #include "core/cub3d.h"
 
+bool	ft_isspace(int c)
+{
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
+}
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;

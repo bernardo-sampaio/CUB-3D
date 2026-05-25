@@ -28,7 +28,10 @@ typedef struct s_map
 }			t_map;
 
 bool		is_map_line(char *line);
-bool		ft_isspace(int c);
 bool		check_map(t_file *file, t_map *map);
+int			count_map_lines(t_file *file);
+bool		after_map(t_list *map);
+void		copy_grid(t_map *map, int index, char *normalized_line);
+bool		is_valid_char(t_map *map);
 
 #endif

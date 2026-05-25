@@ -12,86 +12,23 @@
 
 #include "core/cub3d.h"
 
-bool	ft_isspace(int c)
-{
-	return (c == ' ' || (c >= '\t' && c <= '\r'));
-}
-
-bool	is_map_line(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && ft_isspace(line[i]))
-		i++;
-	if (!line[i])
-		return (false);
-	while (line[i] && ft_strchr("01NSEW ", line[i]))
-		i++;
-	if (line[i] == '\0' || line[i] == '\n')
-		return (true);
-	return (false);
-}
-
-static int	count_map_lines(t_file *file)
-{
-	t_list	*head;
-	int		count;
-
-	head = file->lines;
-	count = 0;
-	while (head)
-	{
-		if (is_map_line((char *)head->content))
-			count++;
-		head = head->next;
-	}
-	return (count);
-}
-
-static bool	after_map(t_list *map)
-{
-	t_list	*grasp;
-
-	grasp = map;
-	while (grasp)
-	{
-		if (is_map_line((char *)grasp->content))
-		{
-			error_msg("Invalid map format: non-map line found after map lines");
-			return (false);
-		}
-		else if (is_only_whitespace((char *)grasp->content) == false)
-		{
-			error_msg("Invalid map format: non-map line found after map lines");
-			return (false);
-		}
-		grasp = grasp->next;
-	}
-	return (true);
-}
-
 static bool	load_grid(t_file *file, t_map *map)
 {
-	t_list	*head;
-	int		index;
+	t_list		*head;
+	static int	index;
 
 	map->grid = ft_calloc(map->height + 1, sizeof(char *));
-	if (!map->grid)
+	if (map->grid == NULL)
 		return (error_msg("Memory allocation failed"), false);
-	map->width = 0;
-	index = 0;
 	head = file->lines;
 	while (head)
 	{
 		if (is_map_line((char *)head->content))
 		{
 			map->grid[index] = ft_strdup((char *)head->content);
-			if (!map->grid[index])
-			{
-				free_mat(map->grid);
-				return (error_msg("Memory allocation failed"), false);
-			}
+			if (map->grid[index] == NULL)
+				return (free_mat(map->grid),
+					error_msg("Memory allocation failed"), false);
 			if ((int)ft_strlen(map->grid[index]) > map->width)
 				map->width = ft_strlen(map->grid[index]) - 1;
 			index++;
@@ -108,7 +45,6 @@ static bool	normalize_grid(t_map *map)
 {
 	char	*normalized_line;
 	int		i;
-	int		j;
 
 	i = 0;
 	while (i < map->height)
@@ -118,29 +54,17 @@ static bool	normalize_grid(t_map *map)
 			normalized_line = ft_calloc(map->width + 2, sizeof(char));
 			if (normalized_line == NULL)
 			{
-				free(normalized_line);
 				return (free_mat(map->grid),
 					error_msg("Memory allocation failed"), false);
 			}
-			ft_strlcpy(normalized_line, map->grid[i], ft_strlen(map->grid[i])
-				+ 1);
-			j = ft_strlen(map->grid[i]) - 1;
-			while (j < map->width)
-			{
-				normalized_line[j] = ' ';
-				j++;
-			}
-			normalized_line[map->width] = '\n';
-			normalized_line[map->width + 1] = '\0';
-			free(map->grid[i]);
-			map->grid[i] = normalized_line;
+			copy_grid(map, i, normalized_line);
 		}
 		i++;
 	}
 	return (true);
 }
 
-static bool	is_valid_char(t_map *map)
+static bool	tell_ma_gossip(t_map *map)
 {
 	int	i;
 	int	j;
@@ -149,96 +73,22 @@ static bool	is_valid_char(t_map *map)
 	while (i < map->height)
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (j < map->width)
 		{
-			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
-				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
-				map->tiles.player++;
-			else if (map->grid[i][j] != '0' && map->grid[i][j] != '1'
-				&& map->grid[i][j] != '\n' && map->grid[i][j] != ' ')
+			if (map->grid[i][j] == '0' || map->grid[i][j] == 'N'
+				|| map->grid[i][j] == 'S' || map->grid[i][j] == 'E'
+				|| map->grid[i][j] == 'W')
 			{
-				free_mat(map->grid);
-				return (error_msg("Invalid char in map"), false);
+				if ((j <= map->width - 1 && map->grid[i][j + 1] == ' ')
+					|| (j > 0 && map->grid[i][j - 1] == ' ')
+					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
+					|| (i > 0 && map->grid[i - 1][j] == ' '))
+					return (free_mat(map->grid),
+						error_msg("My neighbor is gossiper"), false);
 			}
 			j++;
 		}
 		i++;
-	}
-	return (true);
-}
-
-static bool	before_space(t_map *map, int i, int j)
-{
-	int	back;
-	int	forward;
-
-	back = j - 1;
-	while (back >= 0)
-	{
-		if (map->grid[i][back] == '0' || map->grid[i][back] == 'N'
-			|| map->grid[i][back] == 'S' || map->grid[i][back] == 'E'
-			|| map->grid[i][back] == 'W')
-		{
-			free_mat(map->grid);
-			return (error_msg("Map not closed by walls"), false);
-		}
-		else if (map->grid[i][back] == '1')
-			break ;
-		back--;
-	}
-	forward = i + 1;
-	if (forward >= map->height)
-		return (true);
-	while (map->grid[forward][j])
-	{
-		if (map->grid[forward][j] == '0' || map->grid[forward][j] == 'N'
-			|| map->grid[forward][j] == 'S' || map->grid[forward][j] == 'E'
-			|| map->grid[forward][j] == 'W')
-		{
-			free_mat(map->grid);
-			return (error_msg("Map not closed by walls"), false);
-		}
-		else if (map->grid[forward][j] == '1')
-			return (true);
-		forward++;
-	}
-	return (true);
-}
-
-static bool	after_space(t_map *map, int i, int j)
-{
-	int	back;
-	int	up;
-
-	back = j + 1;
-	while (map->grid[i][back])
-	{
-		if (map->grid[i][back] == '0' || map->grid[i][back] == 'N'
-			|| map->grid[i][back] == 'S' || map->grid[i][back] == 'E'
-			|| map->grid[i][back] == 'W')
-		{
-			free_mat(map->grid);
-			return (error_msg("Map not closed by walls"), false);
-		}
-		else if (map->grid[i][back] == '1')
-			break ;
-		back++;
-	}
-	up = i - 1;
-	if (up < 0)
-		return (true);
-	while (up >= 0)
-	{
-		if (map->grid[up][j] == '0' || map->grid[up][j] == 'N'
-			|| map->grid[up][j] == 'S' || map->grid[up][j] == 'E'
-			|| map->grid[up][j] == 'W')
-		{
-			free_mat(map->grid);
-			return (error_msg("Map not closed by walls"), false);
-		}
-		else if (map->grid[up][j] == '1')
-			return (true);
-		up--;
 	}
 	return (true);
 }
@@ -256,15 +106,6 @@ static bool	is_surrounded_by_walls(t_map *map)
 		{
 			if (i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
 			{
-				if (map->grid[i][j] == ' ')
-				{
-					if (before_space(map, i, j) == false)
-						return (false);
-					if (after_space(map, i, j) == false)
-						return (false);
-					j++;
-					continue ;
-				}
 				if (map->grid[i][j] != '1' && map->grid[i][j] != ' ')
 				{
 					free_mat(map->grid);
@@ -298,6 +139,8 @@ bool	check_map(t_file *file, t_map *map)
 		return (false);
 	}
 	if (is_surrounded_by_walls(map) == false)
+		return (false);
+	if (tell_ma_gossip(map) == false)
 		return (false);
 	return (true);
 }

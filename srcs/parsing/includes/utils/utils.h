@@ -15,13 +15,11 @@
 
 # include <limits.h>
 
-typedef struct s_cub3d	t_cub3d;
-
-void					free_mat(char **mat);
-void					free_texture(t_texture *texture_dir);
-void					free_color(t_color *color);
-void					free_structs(t_cub3d *cub3d);
-int						ft_strcmp(const char *s1, const char *s2);
-bool					is_only_whitespace(char *str);
+void	free_mat(char **mat);
+void	free_texture(t_texture *texture_dir);
+void	free_color(t_color *color);
+int		ft_strcmp(const char *s1, const char *s2);
+bool	is_only_whitespace(char *str);
+bool	ft_isspace(int c);
 
 #endif
