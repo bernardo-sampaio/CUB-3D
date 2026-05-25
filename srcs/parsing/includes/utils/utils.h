@@ -20,5 +20,6 @@ void	free_texture(t_texture *texture_dir);
 void	free_color(t_color *color);
 int		ft_strcmp(const char *s1, const char *s2);
 bool	is_only_whitespace(char *str);
+bool	ft_isspace(int c);
 
 #endif

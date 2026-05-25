@@ -26,6 +26,7 @@ OBJS = \
 	parse_color.o \
 	parse_texture.o \
 	parse_map.o \
+	parse_map_utils.o \
 	error/error.o \
 	utils/utils.o \
 	utils/cleanup.o

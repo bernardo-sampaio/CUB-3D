@@ -23,16 +23,16 @@ static bool	final_check(t_file file)
 	{
 		line = (char *)head->content;
 		mat = ft_split(line, 32);
-		if (line[0] != 'F' && line[0] != 'C' != 0
+		if (line[0] != 'F' && line[0] != 'C'
 			&& identify_direction(mat[0]) == false && !is_map_line(line)
 			&& !is_only_whitespace(line))
 		{
 			free_mat(mat);
 			return (error_msg("Invalid line in the file"), false);
 		}
+		free_mat(mat);
 		head = head->next;
 	}
-	free_mat(mat);
 	return (true);
 }
 
