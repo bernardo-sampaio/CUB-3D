@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 13:46:45 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/25 17:25:22 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int    put_pixel_image(t_cub *cub, int x, int y, int color)
     return (1);
 }
 
-int    render_frame(t_cub *cub, t_player *player)
+int    render_frame(t_cub *cub)
 {
     int x;
     int y;
@@ -33,16 +33,16 @@ int    render_frame(t_cub *cub, t_player *player)
     x = 0;
     while (x < WIDTH)
     {
-        calculate_raydir(player, x, WIDTH);
-        setup_dda(player);
-        ft_dda(player);
-        calculate_walldist(player);
+        calculate_raydir(cub->player, x, WIDTH);
+        setup_dda(cub->player);
+        ft_dda(cub->player);
+        calculate_walldist(cub->player);
         y = 0;
         while (y < HEIGHT)
         {
-            if (y < player->drawstart)
+            if (y < cub->player->drawstart)
                 put_pixel_image(cub, x, y, SKY_BULE_COLOR);
-            else if (y >= player->drawstart && y <= player->drawend)
+            else if (y >= cub->player->drawstart && y <= cub->player->drawend)
                 put_pixel_image(cub, x, y,  WALL_COLOR);
             else
                 put_pixel_image(cub, x, y, BROWN_C0LOR);

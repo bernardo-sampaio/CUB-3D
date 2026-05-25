@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 13:20:59 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/24 16:57:37 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:05:45 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ char    **ft_get_map(t_player *player, char *file)
     }
     player->map[i] = NULL;
     get_map_size(player);
+    close(fd);
     return (player->map);
 }

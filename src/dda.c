@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:49:41 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 13:50:47 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/25 17:55:30 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 void    setup_dda(t_player *player)
 {
-    player->delta_x = fabs(1.0 / player->raydir_x);
-    player->delta_y = fabs(1.0 / player->raydir_y);
+    if (player->raydir_x == 0)
+        player->delta_x = 1e30;
+    else
+        player->delta_x = fabs(1.0 / player->raydir_x);
+    if (player->raydir_y == 0)
+        player->delta_y = 1e30;
+    else
+        player->delta_y = fabs(1.0 / player->raydir_y);
     if (player->raydir_x < 0)
     {
         player->step_x = -1;
@@ -55,8 +61,12 @@ void    ft_dda(t_player *player)
             player->map_y += player->step_y;
             player->side = 1;
         }
-        if (player->map_x < 0 || player->map_y < 0)
+        if (player->map_x < 0 || player->map_y < 0
+                || player->map_x >= player->map_width || player->map_y >= player->map_height)
+        {
+            player->walldist = 1e30;
             return;
+        }
         if (player->map_x >= player->map_width || player->map_y >= player->map_height)
             return;
         if (!player->map[player->map_y] || !player->map[player->map_y][player->map_x])
