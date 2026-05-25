@@ -38,34 +38,46 @@ static bool	final_check(t_file file)
 
 int	main(int ac, char **av)
 {
-	t_cub3d		cub3d;
+	t_file		file;
+	t_texture	texture_dir;
+	t_color		color;
+	t_map		map;
 
 	if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
 	if (validate_extension((av[1]), ".cub") == false)
 		return (error_msg("Invalid file extension. Expected .cub\n"), 1);
-	ft_memset(&cub3d, 0, sizeof(t_cub3d));
-	if (check_file(av[1], &cub3d.file) == false)
-		return (ft_lstclear(&cub3d.file.lines, free), 1);
-	if (check_texture(&cub3d.file, &cub3d.texture) == false)
+	ft_memset(&file, 0, sizeof(t_file));
+	if (check_file(av[1], &file) == false)
+		return (ft_lstclear(&file.lines, free), 1);
+	ft_memset(&texture_dir, 0, sizeof(t_texture));
+	if (check_texture(&file, &texture_dir) == false)
 		return (1);
-	if (check_color(&cub3d.file, &cub3d.color) == false)
+	ft_memset(&color, 0, sizeof(t_color));
+	if (check_color(&file, &color) == false)
 	{
-		free_texture(&cub3d.texture);
+		free_texture(&texture_dir);
 		return (1);
 	}
-	if (check_map(&cub3d.file, &cub3d.map) == false)
+	ft_memset(&map, 0, sizeof(t_map));
+	if (check_map(&file, &map) == false)
 	{
-		ft_lstclear(&cub3d.file.lines, free);
-		free_texture(&cub3d.texture);
-		free_color(&cub3d.color);
+		ft_lstclear(&file.lines, free);
+		free_texture(&texture_dir);
+		free_color(&color);
 		return (1);
 	}
-	if (final_check(cub3d.file) == false)
+	if (final_check(file) == false)
 	{
-		free_structs(&cub3d);
+		ft_lstclear(&file.lines, free);
+		free_texture(&texture_dir);
+		free_color(&color);
+		free_mat(map.grid);
 		return (1);
 	}
-	free_structs(&cub3d);
+	ft_lstclear(&file.lines, free);
+	free_texture(&texture_dir);
+	free_color(&color);
+	free_mat(map.grid);
 	return (0);
 }
