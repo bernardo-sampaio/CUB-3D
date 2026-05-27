@@ -23,5 +23,9 @@ typedef struct s_texture
 
 bool		identify_direction(char *s);
 bool		check_texture(t_file *file, t_texture *texture_dir);
+char		*remove_breakline(char *pathname);
+void		init_texture(char *direction, char *pathname,
+				t_texture *texture_dir);
+void		helper(char *msg, char **mat);
 
 #endif

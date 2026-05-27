@@ -12,33 +12,6 @@
 
 #include "core/cub3d.h"
 
-bool	identify_direction(char *s)
-{
-	if (ft_strcmp(s, "NO") == 0 || ft_strcmp(s, "SO") == 0 || ft_strcmp(s,
-			"WE") == 0 || ft_strcmp(s, "EA") == 0)
-	{
-		return (true);
-	}
-	return (false);
-}
-
-static char	*remove_breakline(char *pathname)
-{
-	char	*new;
-	int		i;
-
-	new = ft_calloc(ft_strlen(pathname), sizeof(char));
-	if (new == NULL)
-		return (NULL);
-	i = 0;
-	while (pathname[i] && pathname[i] != '\n')
-	{
-		new[i] = pathname[i];
-		i++;
-	}
-	return (new);
-}
-
 static bool	open_file(const char *pathname)
 {
 	int	fd;
@@ -53,24 +26,37 @@ static bool	open_file(const char *pathname)
 	return (true);
 }
 
-static void	init_texture(char *direction, char *pathname,
-		t_texture *texture_dir)
+static bool	helper_validation(char **mat, int *count, t_texture *texture_dir)
 {
-	if (ft_strcmp(direction, "NO\n") == 0)
-		texture_dir->north_text = ft_strdup(pathname);
-	else if (ft_strcmp(direction, "SO") == 0)
-		texture_dir->south_text = ft_strdup(pathname);
-	else if (ft_strcmp(direction, "WE") == 0)
-		texture_dir->west_text = ft_strdup(pathname);
-	else if (ft_strcmp(direction, "EA") == 0)
-		texture_dir->east_text = ft_strdup(pathname);
+	char	*pathname;
+
+	if (mat[0] && identify_direction(mat[0]))
+	{
+		if (*count > 4)
+			return (helper("Duplicate directions", mat), false);
+		if (mat[1][0] == '\n' || (mat[2]
+				&& is_only_whitespace(mat[2]) == false))
+			return (helper("Invalid pathname", mat), false);
+		pathname = remove_breakline(mat[1]);
+		if (validate_extension(pathname, ".xpm") == false)
+		{
+			free(pathname);
+			return (helper("Invalid file extension. Expected .xpm", mat),
+				false);
+		}
+		if (open_file(pathname) == false)
+			return (free(pathname), helper(NULL, mat), false);
+		init_texture(mat[0], pathname, texture_dir);
+		free(pathname);
+		(*count)++;
+	}
+	return (true);
 }
 
 static bool	extract_path(t_file *file, t_texture *texture_dir)
 {
 	t_list	*head;
 	char	**mat;
-	char	*pathname;
 	int		count;
 
 	head = file->lines;
@@ -78,42 +64,15 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 	while (head)
 	{
 		mat = ft_split((char *)head->content, 32);
-		if (mat[0] && identify_direction(mat[0]))
-		{
-			if (count > 4)
-			{
-				free_mat(mat);
-				return (error_msg("Duplicate directions"), false);
-			}
-			if (mat[1][0] == '\n' || (mat[2]
-					&& is_only_whitespace(mat[2]) == false))
-			{
-				free_mat(mat);
-				return (error_msg("Invalid pathname"), false);
-			}
-			pathname = remove_breakline(mat[1]);
-			if (validate_extension(pathname, ".xpm") == false)
-			{
-				free_mat(mat);
-				free(pathname);
-				return (error_msg("Invalid file extension. Expected .xpm\n"),
-					false);
-			}
-			if (open_file(pathname) == false)
-			{
-				free_mat(mat);
-				free(pathname);
-				return (false);
-			}
-			init_texture(mat[0], pathname, texture_dir);
-			free(pathname);
-			count++;
-		}
+		if (mat == NULL)
+			return (helper("Memory allocation failed", mat), false);
+		if (helper_validation(mat, &count, texture_dir) == false)
+			return (false);
 		free_mat(mat);
 		head = head->next;
 	}
 	if (--count < 4)
-		return (error_msg("Miss direction in the file\n"), false);
+		return (error_msg("Miss direction in the file"), false);
 	return (true);
 }
 
