@@ -27,15 +27,14 @@ static bool	load_grid(t_file *file, t_map *map)
 		{
 			map->grid[index] = ft_strdup((char *)head->content);
 			if (map->grid[index] == NULL)
-				return (free_mat(map->grid),
-					error_msg("Memory allocation failed"), false);
+				return (error_msg("Memory allocation failed"), false);
 			if ((int)ft_strlen(map->grid[index]) > map->width)
 				map->width = ft_strlen(map->grid[index]) - 1;
 			index++;
 		}
 		else if (index > 0)
 			if (after_map(head) == false)
-				return (free_mat(map->grid), false);
+				return (false);
 		head = head->next;
 	}
 	return (true);
@@ -53,10 +52,7 @@ static bool	normalize_grid(t_map *map)
 		{
 			normalized_line = ft_calloc(map->width + 2, sizeof(char));
 			if (normalized_line == NULL)
-			{
-				return (free_mat(map->grid),
-					error_msg("Memory allocation failed"), false);
-			}
+				return (error_msg("Memory allocation failed"), false);
 			copy_grid(map, i, normalized_line);
 		}
 		i++;
@@ -83,8 +79,7 @@ static bool	tell_ma_gossip(t_map *map)
 					|| (j > 0 && map->grid[i][j - 1] == ' ')
 					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
 					|| (i > 0 && map->grid[i - 1][j] == ' '))
-					return (free_mat(map->grid),
-						error_msg("My neighbor is gossiper"), false);
+					return (error_msg("My neighbor is gossiper"), false);
 			}
 			j++;
 		}
@@ -107,10 +102,7 @@ static bool	is_surrounded_by_walls(t_map *map)
 			if (i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
 			{
 				if (map->grid[i][j] != '1' && map->grid[i][j] != ' ')
-				{
-					free_mat(map->grid);
 					return (error_msg("Map not closed by walls"), false);
-				}
 			}
 			j++;
 		}
@@ -134,7 +126,6 @@ bool	check_map(t_file *file, t_map *map)
 		return (false);
 	if (map->tiles.player != 1)
 	{
-		free_mat(map->grid);
 		error_msg("Map must contain exactly one player");
 		return (false);
 	}

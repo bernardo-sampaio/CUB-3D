@@ -43,5 +43,6 @@ void	free_structs(t_cub3d *cub3d)
 	ft_lstclear(&cub3d->file.lines, free);
 	free_texture(&cub3d->texture);
 	free_color(&cub3d->color);
-	free_mat(cub3d->map.grid);
+	if (cub3d->map.grid != NULL)
+		free_mat(cub3d->map.grid);
 }
