@@ -53,3 +53,22 @@ bool	is_only_whitespace(char *str)
 	}
 	return (true);
 }
+
+bool	count_comma(char *color)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (color && color[i])
+	{
+		if (color[i] == ',')
+			count++;
+		i++;
+	}
+	if (count == 2)
+		return (true);
+	error_msg("Invalid color");
+	return (false);
+}

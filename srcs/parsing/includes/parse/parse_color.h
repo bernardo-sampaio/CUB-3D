@@ -20,5 +20,10 @@ typedef struct s_color
 }		t_color;
 
 bool	check_color(t_file *file, t_color *color);
+void	init_color(t_color *color, char *ident, char **content);
+bool	validate_range(char **mat);
+bool	after_space(char **mat, int i, int j);
+bool	all_digit(char **mat);
+bool	check_chars(char *color);
 
 #endif

@@ -24,6 +24,7 @@ OBJS = \
 	get_next_line.o \
 	parse_file.o \
 	parse_color.o \
+	parse_color_utils.o \
 	parse_texture.o \
 	parse_texture_utils.o \
 	parse_map.o \
