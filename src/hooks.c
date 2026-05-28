@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:15:37 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 18:34:59 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:16:56 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int key_press(int key, t_player *player)
     if (key == 97)
         player->move_left = 1;
     if (key == 65361)
-      player->rot_left = 1;
+        player->rot_left = 1;
     if (key == 65363)
         player->rot_right = 1;
     return (0);

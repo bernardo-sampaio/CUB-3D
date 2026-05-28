@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:42:14 by bsampaio          #+#    #+#              #
-#    Updated: 2026/05/25 18:20:25 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/05/26 15:01:31 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 	
 $(NAME): $(LIBFT) $(OBJS) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  -L$(MLX_DIR) -lmlx -lXext -lX11 -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJ): $(HEADER)
 

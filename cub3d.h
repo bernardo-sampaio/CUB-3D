@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 18:19:41 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:39:23 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 1080
 # define SKY_BULE_COLOR 0x0033A1FD
 # define BROWN_C0LOR 0x00E4A853
-# define WALL_COLOR 0x00808080
+# define WALL_COLOR 0xBAE0D2F4
 
 typedef struct s_player
 {

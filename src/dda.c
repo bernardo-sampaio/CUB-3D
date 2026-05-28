@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:49:41 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/25 17:55:30 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:47:26 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void    ft_dda(t_player *player)
             player->walldist = 1e30;
             return;
         }
-        if (player->map_x >= player->map_width || player->map_y >= player->map_height)
-            return;
         if (!player->map[player->map_y] || !player->map[player->map_y][player->map_x])
+        {
+            player->walldist = 1e30;
             return;
+        }
         if (player->map[player->map_y][player->map_x] == '1')
             player->hit = 1;
     }
