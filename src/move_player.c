@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:12:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/28 12:18:49 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/28 15:22:42 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,20 @@ void rotate_left(t_player *player)
     player->plane_x = player->plane_x * cos(-0.03) - player->plane_y * sin(-0.03);
     player->plane_y = old_plane_x * sin(-0.03) + player->plane_y * cos(-0.03);
 }
-void    move_player(t_player *player)
+void    move_player(t_cub *cub)
 {
-    if (player->move_up)
-        forward(player);
-    if (player->move_down)
-        backward(player);
-    if (player->move_left)
-        go_left(player);
-    if (player->move_right)
-        go_right(player);
-    if (player->rot_left)
-        rotate_left(player);
-    if (player->rot_right)
-        rotate_right(player);
+    if (cub->player->move_up)
+        forward(cub->player);
+    if (cub->player->move_down)
+        backward(cub->player);
+    if (cub->player->move_left)
+        go_left(cub->player);
+    if (cub->player->move_right)
+        go_right(cub->player);
+    if (cub->player->rot_left)
+        rotate_left(cub->player);
+    if (cub->player->rot_right)
+        rotate_right(cub->player);
 }
 
 

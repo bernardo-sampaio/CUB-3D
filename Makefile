@@ -6,13 +6,13 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:42:14 by bsampaio          #+#    #+#              #
-#    Updated: 2026/05/26 15:01:31 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/05/28 14:56:55 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
 GNL_DIR = get_next_line

@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/28 12:39:23 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/28 16:05:02 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_cub
     int     bbp;
     int     size_line;
     int     endian;
+    int     key_close;
     int     x;
     int     y;
     int		w;
@@ -83,8 +84,9 @@ void    calculate_raydir(t_player *player, int x, int widthscreen);
 void    setup_dda(t_player *player);
 void    ft_dda(t_player *player);
 void    calculate_walldist(t_player *player);
-void    move_player(t_player *player);
-int     key_press(int key, t_player *player);
-int     key_release(int key, t_player *player);
+void    move_player(t_cub *cub);
+int     key_press(int key, t_cub *cub);
+int     key_release(int key, t_cub *cub);
+int     close_game(t_cub *cub);
 
 #endif
