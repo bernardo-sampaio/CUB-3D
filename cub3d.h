@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/28 16:05:02 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:12:22 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,21 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define SKY_BULE_COLOR 0x0033A1FD
-# define BROWN_C0LOR 0x00E4A853
+# define SKY_BULE_COLOR 0x191970
+# define BROWN_C0LOR 0x2F4F4F
 # define WALL_COLOR 0xBAE0D2F4
+
+typedef struct  s_text
+{
+    void    *img;
+    void    *addr;
+    int w;
+    int h;
+    int size_line;
+    int endian;
+    int bpp;
+} t_text;
+
 
 typedef struct s_player
 {
@@ -66,7 +78,7 @@ typedef struct s_cub
     void    *win;
     void    *img;
     void    *addr;
-    int     bbp;
+    int     bpp;
     int     size_line;
     int     endian;
     int     key_close;
@@ -75,6 +87,10 @@ typedef struct s_cub
     int		w;
 	int		h;
     t_player *player;
+    t_text  *north;
+    t_text  *south;
+    t_text  *weast;
+    t_text  *east;
 } t_cub;
 
 char    **ft_get_map(t_player *player, char *file);
@@ -88,5 +104,6 @@ void    move_player(t_cub *cub);
 int     key_press(int key, t_cub *cub);
 int     key_release(int key, t_cub *cub);
 int     close_game(t_cub *cub);
+void init_textures(t_cub *cub);
 
 #endif
