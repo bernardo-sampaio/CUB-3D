@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d.h"
+#include "core/cub3d_parsing.h"
 
 static bool	load_grid(t_file *file, t_map *map)
 {

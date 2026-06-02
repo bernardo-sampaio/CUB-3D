@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d.h"
+#include "core/cub3d_parsing.h"
 
 bool	identify_direction(char *s)
 {
@@ -41,7 +41,7 @@ char	*remove_breakline(char *pathname)
 
 void	init_texture(char *direction, char *pathname, t_texture *texture_dir)
 {
-	if (ft_strcmp(direction, "NO\n") == 0)
+	if (ft_strcmp(direction, "NO") == 0)
 		texture_dir->north_text = ft_strdup(pathname);
 	else if (ft_strcmp(direction, "SO") == 0)
 		texture_dir->south_text = ft_strdup(pathname);

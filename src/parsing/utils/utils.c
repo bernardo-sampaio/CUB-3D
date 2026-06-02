@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d.h"
+#include "core/cub3d_parsing.h"
 
 bool	ft_isspace(int c)
 {

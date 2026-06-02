@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d.h"
+#include "core/cub3d_parsing.h"
 
 void	init_color(t_color *color, char *ident, char **content)
 {

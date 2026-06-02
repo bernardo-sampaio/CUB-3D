@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <core/cub3d.h>
+#include "core/cub3d_parsing.h"
 
 void	free_mat(char **mat)
 {

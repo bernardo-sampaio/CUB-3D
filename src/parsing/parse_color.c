@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d.h"
+#include "core/cub3d_parsing.h"
 
 static char	*remove_first_char(char *content)
 {

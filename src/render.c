@@ -19,12 +19,12 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
         exit(1);
     tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
 }
-void    init_textures(t_cub *cub)
+void    init_textures(t_cub *cub, t_texture *texture)
 {
-    load_textures(cub, cub->north, "sprites/xpm/parede.xpm");
-    load_textures(cub, cub->south, "sprites/xpm/parede1.xpm");
-    load_textures(cub, cub->east, "sprites/xpm/parede.xpm");
-    load_textures(cub, cub->weast, "sprites/xpm/parede1.xpm");
+    load_textures(cub, cub->north, texture->north_text);
+    load_textures(cub, cub->south, texture->south_text);
+    load_textures(cub, cub->east, texture->east_text);
+    load_textures(cub, cub->weast, texture->east_text);
 }
 
 t_text *get_texture(t_cub *cub)

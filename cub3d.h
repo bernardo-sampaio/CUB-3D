@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include"minilibx-linux/mlx.h"
-# include"get_next_line/get_next_line.h"
+#include "core/cub3d_parsing.h"
 # include<stdio.h>
 # include<fcntl.h>
 # include<math.h> 
@@ -114,7 +114,7 @@ void    calculate_walldist(t_player *player);
 
 // Rendering
 int     render_frame(t_cub *cub);
-void    init_textures(t_cub *cub);
+void    init_textures(t_cub *cub, t_texture *texture);
 int    put_pixel_image(t_cub *cub, int x, int y, int color);
 void    draw_minimap(t_cub *cub);
 

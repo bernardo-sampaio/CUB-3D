@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_parsing.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:55:27 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/14 15:55:28 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/02 15:02:16 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_PARSING_H
+# define CUB3D_PARSING_H
 
 # include "error/error.h"
 # include "get_next_line/get_next_line.h"
