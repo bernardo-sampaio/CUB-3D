@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/29 11:11:07 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/01 17:41:16 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int    render_frame(t_cub *cub)
         }
         x++;
     }
+    draw_minimap(cub);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/29 11:12:22 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/01 18:24:28 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include<fcntl.h>
 # include<math.h> 
 
+# define SCALE_PX 8
+# define OFFSET_X 10
+# define OFFSET_Y 10
 # define WIDTH 1920
 # define HEIGHT 1080
 # define SKY_BULE_COLOR 0x191970
@@ -70,6 +73,7 @@ typedef struct s_player
     int move_right;
     int rot_left;
     int rot_right;
+    int action;
 } t_player;
 
 typedef struct s_cub
@@ -93,17 +97,38 @@ typedef struct s_cub
     t_text  *east;
 } t_cub;
 
-char    **ft_get_map(t_player *player, char *file);
+// Player
 void    initialize_player(t_player *player);
-int     render_frame(t_cub *cub);
-void    calculate_raydir(t_player *player, int x, int widthscreen);
-void    setup_dda(t_player *player);
-void    ft_dda(t_player *player);
-void    calculate_walldist(t_player *player);
+void    rotate_player(t_player *player, double angle);
+void    rotate_right(t_player *player);
+void    rotate_left(t_player *player);
+int     in_bounds(t_player *player, int x, int y);
 void    move_player(t_cub *cub);
+
+// Raycasting
+void    ft_dda(t_player *player);
+void    setup_dda(t_player *player);
+void    calculate_raydir(t_player *player, int x, int widthscreen);
+void    calculate_walldist(t_player *player);
+
+
+// Rendering
+int     render_frame(t_cub *cub);
+void    init_textures(t_cub *cub);
+int    put_pixel_image(t_cub *cub, int x, int y, int color);
+void    draw_minimap(t_cub *cub);
+
+// Game
+int     close_game(t_cub *cub);
+
+
+//Map
+char    **ft_get_map(t_player *player, char *file);
+
+
+// Hooks
+int     mouse_move(int x, int y, t_cub *cub);
 int     key_press(int key, t_cub *cub);
 int     key_release(int key, t_cub *cub);
-int     close_game(t_cub *cub);
-void init_textures(t_cub *cub);
 
 #endif

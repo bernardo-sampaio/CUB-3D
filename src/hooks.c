@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:15:37 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/28 16:05:18 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/01 18:26:34 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int key_press(int key, t_cub *cub)
         cub->player->rot_left = 1;
     if (key == 65363)
         cub->player->rot_right = 1;
+    if (key == 32)
+        cub->player->action = 1;
     return (0);
 }
 int key_release(int key, t_cub *cub)
@@ -44,5 +46,23 @@ int key_release(int key, t_cub *cub)
         cub->player->rot_right = 0;
     if (key == 65307)
         close_game(cub);
+    if (key == 32)
+        cub->player->action = 0;
+    return (0);
+}
+
+int mouse_move(int x, int y, t_cub *cub)
+{
+    int center_x;
+    int delta_x;
+
+    (void)y;
+    center_x = WIDTH / 2;
+    delta_x = x - center_x;
+    if (delta_x == 0)
+        return (0);
+    rotate_player(cub->player, delta_x * 0.001);
+    mlx_mouse_move(cub->mlx, cub->win, center_x, HEIGHT / 2);
+    mlx_mouse_hide(cub->mlx, cub->win);
     return (0);
 }

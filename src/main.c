@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/05/29 10:30:22 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/01 17:46:20 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int main(int ac, char **av)
     mlx_hook(cub.win, 17, 0, close_game, &cub);
     mlx_hook(cub.win, 03, (1L << 1), key_release, &cub);
     mlx_hook(cub.win, 02, (1L << 0), key_press, &cub);
+    mlx_hook(cub.win, 06, (1L << 06), mouse_move, &cub);
     mlx_loop(cub.mlx);
     return (0);
 }
