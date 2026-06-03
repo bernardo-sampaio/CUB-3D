@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 17:45:46 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/01 18:32:36 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/02 18:09:07 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,11 @@ void    draw_minimap(t_cub *cub)
         while (++x < cub->player->map_width)
         {
             if (!cub->player->map[y] || !cub->player->map[y][x] || cub->player->map[y][x] == ' ')
-            {
-                x++;
                 continue;
-            }
             if (cub->player->map[y][x] == '1')
                 color = 0x00FFFFFF;
             else
-            {
-                x++;
                 continue;
-            }
             draw_tile(cub, x, y, color);
         }
     }

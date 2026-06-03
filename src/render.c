@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/01 17:41:16 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/03 15:32:12 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
 }
 void    init_textures(t_cub *cub)
 {
-    load_textures(cub, cub->north, "sprites/xpm/parede.xpm");
-    load_textures(cub, cub->south, "sprites/xpm/parede1.xpm");
+    load_textures(cub, cub->north, "sprites/xpm/north.xpm");
+    load_textures(cub, cub->south, "sprites/xpm/south.xpm");
     load_textures(cub, cub->east, "sprites/xpm/parede.xpm");
     load_textures(cub, cub->weast, "sprites/xpm/parede1.xpm");
 }
@@ -84,9 +84,9 @@ int    render_frame(t_cub *cub)
             wall_x = cub->player->pos_x + cub->player->walldist * cub->player->raydir_x;
         wall_x -= floor(wall_x);
         tex_x = (int)(wall_x * text->w);
-        if (cub->player->side == 0 && cub->player->raydir_x > 0)
+        if (cub->player->side == 0 && cub->player->raydir_x < 0)
             tex_x = text->w - tex_x - 1;
-        if (cub->player->side == 1 && cub->player->raydir_y < 0)
+        if (cub->player->side == 1 && cub->player->raydir_y > 0)
             tex_x = text->w - tex_x - 1;
         step = (double)text->h / cub->player->line_height;
         tex_pos = (cub->player->drawstart - HEIGHT / 2 + cub->player->line_height / 2) * step;

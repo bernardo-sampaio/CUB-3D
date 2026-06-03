@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:59:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/01 15:48:06 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/03 15:33:22 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void    calculate_walldist(t_player *player)
         player->walldist = (player->side_x - player->delta_x);
     else
         player->walldist = (player->side_y - player->delta_y);
-    if (player->walldist <= 0)
-        player->walldist = 0.01;
+    if (player->walldist < 0.0001)
+        player->walldist = 0.0001;
     player->line_height = (int)(HEIGHT / player->walldist);
     player->drawstart = -player->line_height / 2 + HEIGHT / 2;
     if (player->drawstart < 0)
