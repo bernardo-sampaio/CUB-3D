@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include"minilibx-linux/mlx.h"
-# include"get_next_line/get_next_line.h"
+#include "core/cub3d_parsing.h"
 # include<stdio.h>
 # include<fcntl.h>
 # include<math.h> 
@@ -22,8 +22,8 @@
 # define SCALE_PX 8
 # define OFFSET_X 10
 # define OFFSET_Y 10
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 700
+# define HEIGHT 500
 # define SKY_BULE_COLOR 0x191970
 # define BROWN_C0LOR 0x2F4F4F
 # define WALL_COLOR 0xBAE0D2F4
@@ -116,7 +116,7 @@ void    calculate_walldist(t_player *player);
 
 // Rendering
 int     render_frame(t_cub *cub);
-void    init_textures(t_cub *cub);
+void    init_textures(t_cub *cub, t_texture *texture);
 int    put_pixel_image(t_cub *cub, int x, int y, int color);
 void    draw_minimap(t_cub *cub);
 

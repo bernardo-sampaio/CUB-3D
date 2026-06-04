@@ -3,52 +3,78 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
+#    By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/14 15:42:14 by bsampaio          #+#    #+#              #
-#    Updated: 2026/06/01 17:46:38 by bsampaio         ###   ########.fr        #
+#    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
+#    Updated: 2026/05/15 19:48:25 by ealbino          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror -Isrc/parsing/includes -Isrc/parsing/libft -I./
+
+NAME        = cub3d
+
 MLX_DIR = minilibx-linux
+
 MLX = $(MLX_DIR)/libmlx_Linux.a
+
 GNL_DIR = get_next_line
-LIBFT_DIR = $(GNL_DIR)/Libft
-LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-		src/raycasting_map.c src/player_position.c src/render.c src/main.c \
-		src/dda.c src/raycast.c src/move_player.c src/hooks.c src/rotate_player.c \
-		src/minimap.c
-	  
-OBJS = $(SRCS:.c=.o)
 
-HEADER = cub3d.h
+LIBFT_DIR   = src/parsing/libft
 
-all: $(NAME)
+LIBFT       = $(LIBFT_DIR)/libft.a
+
+HEADER       = cub3d.h src/parsing/includes/core/cub3d_parsing.h
+OBJS = \
+	src/main.o \
+	src/raycasting_map.o \
+	src/player_position.o \
+	src/render.o\
+	src/dda.o src/raycast.o \
+	src/move_player.o \
+	src/hooks.o \
+	src/rotate_player.o \
+	src/minimap.o \
+	src/parsing/get_next_line.o \
+	src/parsing/parse_file.o \
+	src/parsing/parse_color.o \
+	src/parsing/parse_color_utils.o \
+	src/parsing/parse_texture.o \
+	src/parsing/parse_texture_utils.o \
+	src/parsing/parse_map.o \
+	src/parsing/parse_map_utils.o \
+	src/parsing/error/error.o \
+	src/parsing/utils/utils.o \
+	src/parsing/utils/cleanup.o
+
+all: $(LIBFT) $(MLX) $(NAME)
 
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
-	
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
-	
-$(NAME): $(LIBFT) $(OBJS) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
 
-$(OBJ): $(HEADER)
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) bonus -C $(LIBFT_DIR)
+
+$(OBJS): $(HEADER)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) clean -C $(MLX_DIR)
+	@$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+
+run: all clean
+	@clear
+	@if [ -f cub3d ]; then \
+		echo "Successfully compiled"; \
+	fi
+
 re: fclean all
 
 .PHONY: all clean fclean re
