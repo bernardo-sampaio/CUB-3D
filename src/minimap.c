@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 17:45:46 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/02 18:09:07 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/04 16:26:45 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,22 @@ void    draw_minimap(t_cub *cub)
     int y;
     int color;
 
-    draw_player(cub);
     y = -1;
     while (++y < cub->player->map_height)
     {
         x = -1;
         while (++x < cub->player->map_width)
         {
-            if (!cub->player->map[y] || !cub->player->map[y][x] || cub->player->map[y][x] == ' ')
-                continue;
+            if (!cub->player->map[y] || !cub->player->map[y][x])
+                break ;
             if (cub->player->map[y][x] == '1')
                 color = 0x00FFFFFF;
+            else if (cub->player->map[y][x] == '0')
+                color = 0x40000000;
             else
                 continue;
             draw_tile(cub, x, y, color);
         }
     }
+    draw_player(cub);
 }

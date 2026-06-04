@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/03 15:22:32 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:28:16 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_player
     int step_x;
     int step_y;
     int hit;
+    int hit_door;
     int side;
     int line_height;
     int drawend;
@@ -95,6 +96,7 @@ typedef struct s_cub
     t_text  *south;
     t_text  *weast;
     t_text  *east;
+    t_text  *door;
 } t_cub;
 
 // Player

@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/03 15:32:12 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:43:14 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int    render_frame(t_cub *cub)
         setup_dda(cub->player);
         ft_dda(cub->player);
         calculate_walldist(cub->player);
+        if (cub->player->line_height <= 0)
+            cub->player->line_height = 1;
         text = get_texture(cub);
         if (cub->player->side == 0)
             wall_x = cub->player->pos_y + cub->player->walldist * cub->player->raydir_y;
@@ -91,19 +93,26 @@ int    render_frame(t_cub *cub)
         step = (double)text->h / cub->player->line_height;
         tex_pos = (cub->player->drawstart - HEIGHT / 2 + cub->player->line_height / 2) * step;
         y = 0;
+        while (y < cub->player->drawstart)
+        {
+                put_pixel_image(cub, x, y, SKY_BULE_COLOR);
+                y++;
+        }
+        while (y <= cub->player->drawend)
+        {
+            tex_y = (int)tex_pos;
+            if (tex_y < 0)
+                tex_y = 0;
+            if (tex_y >= text->h)
+                tex_y = text->h - 1;
+            tex_pos += step;
+            color = *(int *)(text->addr + tex_y * text->size_line + tex_x * (text->bpp / 8));
+            put_pixel_image(cub, x, y, color);
+            y++;
+        }
         while (y < HEIGHT)
         {
-            if (y < cub->player->drawstart)
-                put_pixel_image(cub, x, y, SKY_BULE_COLOR);   
-            else if (y >= cub->player->drawstart && y <= cub->player->drawend)
-            {
-                tex_y = (int)tex_pos & (text->h - 1);
-                tex_pos += step;
-                color = *(int *)(text->addr + tex_y * text->size_line + tex_x * (text->bpp / 8));
-                put_pixel_image(cub, x, y, color);
-            }
-            else
-                put_pixel_image(cub, x, y, BROWN_C0LOR);
+            put_pixel_image(cub, x, y, BROWN_C0LOR);
             y++;
         }
         x++;

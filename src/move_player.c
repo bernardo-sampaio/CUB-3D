@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:12:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/01 15:39:35 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:43:35 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,56 +16,96 @@ void    go_right(t_player *player)
 {
     double new_x;
     double new_y;
+    double margin_x;
+    double margin_y;
     
     new_x = player->pos_x + player->plane_x * 0.05;
     new_y = player->pos_y + player->plane_y * 0.05;
-    if (in_bounds(player, (int)new_x, (int)player->pos_y) && 
-        player->map[(int)player->pos_y][(int)new_x] != '1')
+    if (player->plane_x > 0)
+        margin_x = 0.2;
+    else
+        margin_x = -0.2;
+    if (player->plane_y > 0)
+        margin_y = 0.2;
+    else
+        margin_y = -0.2;
+    if (in_bounds(player, (int)(new_x + margin_x), (int)player->pos_y) && 
+        player->map[(int)player->pos_y][(int)(new_x + margin_x)] != '1')
         player->pos_x = new_x;
-    if (in_bounds(player, (int)player->pos_x, (int)new_y) &&
-         player->map[(int)new_y][(int)player->pos_x] != '1')
+    if (in_bounds(player, (int)player->pos_x, (int)(new_y + margin_y)) &&
+         player->map[(int)(new_y + margin_y)][(int)player->pos_x] != '1')
         player->pos_y = new_y;
 }
 void    go_left(t_player *player)
 {
     double new_x;
     double new_y;
+    double margin_x;
+    double margin_y;
 
     new_x = player->pos_x - player->plane_x * 0.05;
     new_y = player->pos_y - player->plane_y * 0.05;
-    if (in_bounds(player, (int)new_x, (int)player->pos_y) && 
-        player->map[(int)player->pos_y][(int)new_x] != '1')
+    if (player->plane_x > 0)
+        margin_x = -0.2;
+    else
+        margin_x = 0.2;
+    if (player->plane_y > 0)
+        margin_y = -0.2;
+    else
+        margin_y = 0.2;
+    if (in_bounds(player, (int)(new_x + margin_x), (int)player->pos_y) && 
+        player->map[(int)player->pos_y][(int)(new_x + margin_x)] != '1')
         player->pos_x = new_x;
-    if (in_bounds(player, (int)player->pos_x, (int)new_y) && 
-        player->map[(int)new_y][(int)player->pos_x] != '1')
+    if (in_bounds(player, (int)player->pos_x, (int)(new_y + margin_y)) && 
+        player->map[(int)(new_y + margin_y)][(int)player->pos_x] != '1')
         player->pos_y = new_y;
 }
 void    backward(t_player *player)
 {
     double new_x;
     double new_y;
+    double margin_x;
+    double margin_y;
 
     new_x = player->pos_x - player->dir_x * 0.05;
     new_y = player->pos_y - player->dir_y * 0.05;
-    if (in_bounds(player, (int)new_x, (int)player->pos_y) && 
-        player->map[(int)player->pos_y][(int)new_x] != '1')
+    if (player->dir_x > 0)
+        margin_x = -0.2;
+    else
+        margin_x = 0.2;
+    if (player->dir_y > 0)
+        margin_y = -0.2;
+    else
+        margin_y = 0.2;
+    if (in_bounds(player, (int)(new_x + margin_x), (int)player->pos_y) && 
+        player->map[(int)player->pos_y][(int)(new_x + margin_x)] != '1')
         player->pos_x = new_x;
-    if (in_bounds(player, (int)player->pos_x, (int)new_y) && 
-        player->map[(int)new_y][(int)player->pos_x] != '1')
+    if (in_bounds(player, (int)player->pos_x, (int)(new_y + margin_y)) && 
+        player->map[(int)(new_y + margin_y)][(int)player->pos_x] != '1')
         player->pos_y = new_y;
 }
 void forward(t_player *player)
 {
     double new_x; 
     double new_y;
+    double margin_x;
+    double margin_y;
      
     new_x = player->pos_x + player->dir_x * 0.05;
     new_y = player->pos_y + player->dir_y * 0.05;
-    if (in_bounds(player, (int)new_x, (int)player->pos_y) && 
-        player->map[(int)player->pos_y][(int)new_x] != '1')
+    if (player->dir_x > 0)
+        margin_x = 0.2;
+    else
+        margin_x = -0.2;
+    if (player->dir_y > 0)
+        margin_y = 0.2;
+    else
+        margin_y = -0.2;
+    if (in_bounds(player, (int)(new_x + margin_x), (int)player->pos_y) && 
+        player->map[(int)player->pos_y][(int)(new_x + margin_x)] != '1')
         player->pos_x = new_x;
-    if (in_bounds(player, (int)player->pos_x, (int)new_y) && 
-        player->map[(int)new_y][(int)player->pos_x] != '1')
+    if (in_bounds(player, (int)player->pos_x, (int)(new_y + margin_y)) && 
+        player->map[(int)(new_y + margin_y)][(int)player->pos_x] != '1')
         player->pos_y = new_y;
 }
 
