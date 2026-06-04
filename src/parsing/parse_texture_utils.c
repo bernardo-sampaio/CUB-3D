@@ -6,17 +6,27 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 11:02:34 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/27 11:02:35 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/04 15:48:20 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/cub3d_parsing.h"
 
-bool	identify_direction(char *s)
+bool	identify_direction(char *s, char *chars)
 {
 	if (ft_strcmp(s, "NO") == 0 || ft_strcmp(s, "SO") == 0 || ft_strcmp(s,
 			"WE") == 0 || ft_strcmp(s, "EA") == 0)
 	{
+		if (chars == NULL)
+			return (true);
+		if (ft_strchr(chars, s[0]) && ft_strlen(chars) < 5)
+		{
+			chars[ft_strlen(chars)] = 'T';
+			return (false);
+		}
+		if (ft_strchr(chars, s[0]))
+			return (false);
+		chars[ft_strlen(chars)] = s[0];
 		return (true);
 	}
 	return (false);

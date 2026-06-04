@@ -24,7 +24,7 @@ static bool	final_check(t_file file)
 		line = (char *)head->content;
 		mat = ft_split(line, 32);
 		if (line[0] != 'F' && line[0] != 'C'
-			&& identify_direction(mat[0]) == false && !is_map_line(line)
+			&& identify_direction(mat[0], NULL) == false && !is_map_line(line)
 			&& !is_only_whitespace(line))
 		{
 			free_mat(mat);
@@ -83,9 +83,9 @@ int main(int ac, char **av)
 	if (check_file(av[1], &cub3d.file) == false)
 		return (printf("file"), ft_lstclear(&cub3d.file.lines, free), 1);
 	if (check_texture(&cub3d.file, &cub3d.texture) == false)
-		return (printf("text"),1);
+		return (printf("text"), free_structs(&cub3d), 1);
 	if (check_color(&cub3d.file, &cub3d.color) == false)
-		return (printf("color"),free_structs(&cub3d), 1);
+		return (printf("color"), free_structs(&cub3d), 1);
 	if (check_map(&cub3d.file, &cub3d.map) == false)
 		return (printf("map"),free_structs(&cub3d), 1);
     player.map = cub3d.map.grid;

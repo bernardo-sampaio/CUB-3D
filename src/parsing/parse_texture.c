@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 19:37:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:12:33 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/04 16:13:15 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ static bool	open_file(const char *pathname)
 	return (true);
 }
 
-static bool	helper_validation(char **mat, int *count, t_texture *texture_dir)
+static bool	helper_validation(char **mat, char *chars, t_texture *texture_dir)
 {
 	char	*pathname;
 
-	if (mat[0] && identify_direction(mat[0]))
+	if (mat == NULL || chars == NULL)
+		return (free(chars),
+			helper("Memory allocation failed", mat), false);
+	if (mat[0] && identify_direction(mat[0], chars))
 	{
-		if (*count > 4)
-			return (helper("Duplicate directions", mat), false);
 		if (mat[1][0] == '\n' || (mat[2]
 				&& is_only_whitespace(mat[2]) == false))
 			return (helper("Invalid pathname", mat), false);
@@ -48,7 +49,6 @@ static bool	helper_validation(char **mat, int *count, t_texture *texture_dir)
 			return (free(pathname), helper(NULL, mat), false);
 		init_texture(mat[0], pathname, texture_dir);
 		free(pathname);
-		(*count)++;
 	}
 	return (true);
 }
@@ -57,32 +57,34 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 {
 	t_list	*head;
 	char	**mat;
-	int		count;
+	char	*chars;
 
+	chars = ft_calloc(6, sizeof(char));
 	head = file->lines;
-	count = 1;
 	while (head)
 	{
-		mat = ft_split((char *)head->content, 32);
-		if (mat == NULL)
-			return (helper("Memory allocation failed", mat), false);
-		if (helper_validation(mat, &count, texture_dir) == false)
-			return (false);
+		mat = ft_split((char *)head->content, ' ');
+		if (helper_validation(mat, chars, texture_dir) == false)
+			return (free(chars), false);
 		free_mat(mat);
 		head = head->next;
 	}
-	if (--count < 4)
-		return (error_msg("Miss direction in the file"), false);
-	return (true);
+	if ((ft_strlen(chars) != 4) || !(ft_strchr(chars, 'N')
+			&& ft_strchr(chars, 'S') && ft_strchr(chars, 'W')
+			&& ft_strchr(chars, 'E')))
+	{
+		if (ft_strlen(chars) > 4)
+			return (free(chars),
+				error_msg("Duplicate directions"), false);
+		return (free(chars),
+			error_msg("Miss direction in the file"), false);
+	}
+	return (free(chars), true);
 }
 
 bool	check_texture(t_file *file, t_texture *texture_dir)
 {
 	if (extract_path(file, texture_dir) == false)
-	{
-		ft_lstclear(&file->lines, free);
-		free_texture(texture_dir);
 		return (false);
-	}
 	return (true);
 }

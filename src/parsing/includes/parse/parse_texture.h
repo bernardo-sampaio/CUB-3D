@@ -21,7 +21,7 @@ typedef struct s_texture
 	char	*east_text;
 }			t_texture;
 
-bool		identify_direction(char *s);
+bool		identify_direction(char *s, char *chars);
 bool		check_texture(t_file *file, t_texture *texture_dir);
 char		*remove_breakline(char *pathname);
 void		init_texture(char *direction, char *pathname,
