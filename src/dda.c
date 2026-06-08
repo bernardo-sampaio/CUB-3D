@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 13:49:41 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/04 17:42:50 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/05 12:29:39 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void    setup_dda(t_player *player)
 void    ft_dda(t_player *player)
 {
     player->hit = 0;
+    player->hit_door = 0;
     while(player->hit == 0)
     {
         if (player->side_x < player->side_y)
@@ -74,5 +75,20 @@ void    ft_dda(t_player *player)
         }
         if (player->map[player->map_y][player->map_x] == '1')
             player->hit = 1;
+        else if (player->map[player->map_y][player->map_x] == 'D' || 
+            (player->map[player->map_y][player->map_x] >= '2' && 
+                player->map[player->map_y][player->map_x] <= '5'))
+        {
+            player->hit = 1;
+            player->hit_door = 1;
+            if (player->map[player->map_y][player->map_x] == 'D')
+                player->door_frame = 0;
+            else if (player->map[player->map_y][player->map_x] >= '2' && player->map[player->map_y][player->map_x] <= '5')
+            {
+                player->door_frame = player->map[player->map_y][player->map_x] - '2' + 1;
+                if (player->door_frame > 4)
+                   player->door_frame = 4; 
+            }
+        }
     }
 }

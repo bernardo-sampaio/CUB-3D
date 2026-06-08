@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:15:37 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/01 18:26:34 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/05 13:40:14 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int key_press(int key, t_cub *cub)
     if (key == 65363)
         cub->player->rot_right = 1;
     if (key == 32)
-        cub->player->action = 1;
+        open_close_door(cub);
     return (0);
 }
 int key_release(int key, t_cub *cub)
@@ -46,8 +46,6 @@ int key_release(int key, t_cub *cub)
         cub->player->rot_right = 0;
     if (key == 65307)
         close_game(cub);
-    if (key == 32)
-        cub->player->action = 0;
     return (0);
 }
 

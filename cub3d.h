@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/04 17:28:16 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/08 15:38:58 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define OFFSET_Y 10
 # define WIDTH 1920
 # define HEIGHT 1080
-# define SKY_BULE_COLOR 0x191970
-# define BROWN_C0LOR 0x2F4F4F
+# define SKY_BULE_COLOR 0x646402
+# define BROWN_C0LOR 0x505050
 # define WALL_COLOR 0xBAE0D2F4
 
 typedef struct  s_text
@@ -62,6 +62,7 @@ typedef struct s_player
     int step_y;
     int hit;
     int hit_door;
+    int door_frame;
     int side;
     int line_height;
     int drawend;
@@ -74,7 +75,6 @@ typedef struct s_player
     int move_right;
     int rot_left;
     int rot_right;
-    int action;
 } t_player;
 
 typedef struct s_cub
@@ -96,7 +96,7 @@ typedef struct s_cub
     t_text  *south;
     t_text  *weast;
     t_text  *east;
-    t_text  *door;
+    t_text  *door[5];
 } t_cub;
 
 // Player
@@ -116,13 +116,15 @@ void    calculate_walldist(t_player *player);
 
 // Rendering
 int     render_frame(t_cub *cub);
+int     put_pixel_image(t_cub *cub, int x, int y, int color);
 void    init_textures(t_cub *cub);
-int    put_pixel_image(t_cub *cub, int x, int y, int color);
 void    draw_minimap(t_cub *cub);
+void    open_close_door(t_cub *cub);
+
 
 // Game
 int     close_game(t_cub *cub);
-
+void    update_door(t_cub *cub);
 
 //Map
 char    **ft_get_map(t_player *player, char *file);

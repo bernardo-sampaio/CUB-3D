@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/04 17:42:56 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/08 15:54:21 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int game_loop(t_cub *cub)
 {
     move_player(cub);
     mlx_clear_window(cub->mlx, cub->win);
+    update_door(cub);
     render_frame(cub);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
     return (0);
@@ -23,16 +24,29 @@ int game_loop(t_cub *cub)
 
 int     close_game(t_cub *cub)
 {
-    mlx_destroy_image(cub->mlx, cub->img);
-    mlx_destroy_window(cub->mlx, cub->win);
-    mlx_destroy_display(cub->mlx);
-    int i = 0;
+    int i;
+    
+    if (cub && cub->mlx)
+        mlx_destroy_display(cub->mlx);
+    i = 0;
     while (cub->player->map[i])
     {
         free(cub->player->map[i]);
         i++;
     }
     free(cub->player->map);
+    i = 0;
+    while (i < 5)
+    {
+        if (cub && cub->mlx && cub->door[i]->img)
+            mlx_destroy_image(cub->mlx, cub->door[i]->img);
+        free(cub->door[i]);
+        i++;
+    }
+    if (cub && cub->mlx && cub->img)
+        mlx_destroy_image(cub->mlx, cub->img);
+    if (cub && cub->mlx && cub->win)
+        mlx_destroy_window(cub->mlx, cub->win);
     exit(1);
     return (0);
 }
@@ -44,8 +58,9 @@ int main(int ac, char **av)
     t_text north;
     t_text south;
     t_text east;
-    t_text weast;   
+    t_text weast;
     
+    printf("%d", SKY_BULE_COLOR);
     cub.north = &north;
     cub.south = &south;
     cub.east = &east;

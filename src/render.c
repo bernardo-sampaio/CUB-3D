@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/04 17:43:14 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/05 13:10:27 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,38 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
 }
 void    init_textures(t_cub *cub)
 {
+    int  i;
+    char *path_tex[5] = {
+        "sprites/xpm/door_00.xpm",
+        "sprites/xpm/door_04.xpm",
+        "sprites/xpm/door_06.xpm",
+        "sprites/xpm/door_08.xpm",
+        "sprites/xpm/door_10.xpm"
+    };
+    
     load_textures(cub, cub->north, "sprites/xpm/north.xpm");
     load_textures(cub, cub->south, "sprites/xpm/south.xpm");
     load_textures(cub, cub->east, "sprites/xpm/parede.xpm");
     load_textures(cub, cub->weast, "sprites/xpm/parede1.xpm");
+    i = 0;
+    while(i < 5)
+    {
+         cub->door[i] = malloc(sizeof(t_text));
+         if (!cub->door[i])
+            close_game(cub);
+         load_textures(cub, cub->door[i], path_tex[i]);
+         i++;
+    }
 }
 
 t_text *get_texture(t_cub *cub)
 {
+    if (cub->player->hit_door == 1)
+    {
+        if (cub->player->door_frame < 0 || cub->player->door_frame > 4 || !cub->door[cub->player->door_frame])
+            return(cub->north);
+        return (cub->door[cub->player->door_frame]);
+    }
     if (cub->player->side == 0)
     {
         if (cub->player->raydir_x > 0)
@@ -75,6 +99,8 @@ int    render_frame(t_cub *cub)
     {
         calculate_raydir(cub->player, x, WIDTH);
         setup_dda(cub->player);
+        cub->player->hit = 0;
+        cub->player->hit_door = 0;
         ft_dda(cub->player);
         calculate_walldist(cub->player);
         if (cub->player->line_height <= 0)
