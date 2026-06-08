@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/05 13:10:27 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/08 16:49:51 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,26 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
         exit(1);
     tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
 }
-void    init_textures(t_cub *cub)
+void    init_textures(t_cub *cub, t_texture *texture)
 {
-    int  i;
-    char *path_tex[5] = {
-        "sprites/xpm/door_00.xpm",
-        "sprites/xpm/door_04.xpm",
-        "sprites/xpm/door_06.xpm",
-        "sprites/xpm/door_08.xpm",
-        "sprites/xpm/door_10.xpm"
-    };
+    int i;
+    texture->door[0] = ft_strdup("./sprites/xpm/door_00.xpm");
+    texture->door[1] = ft_strdup("./sprites/xpm/door_02.xpm");
+    texture->door[2] = ft_strdup("./sprites/xpm/door_04.xpm");
+    texture->door[3] = ft_strdup("./sprites/xpm/door_06.xpm");
+    texture->door[4] = ft_strdup("./sprites/xpm/door_10.xpm");
     
-    load_textures(cub, cub->north, "sprites/xpm/north.xpm");
-    load_textures(cub, cub->south, "sprites/xpm/south.xpm");
-    load_textures(cub, cub->east, "sprites/xpm/parede.xpm");
-    load_textures(cub, cub->weast, "sprites/xpm/parede1.xpm");
     i = 0;
     while(i < 5)
     {
-         cub->door[i] = malloc(sizeof(t_text));
-         if (!cub->door[i])
-            close_game(cub);
-         load_textures(cub, cub->door[i], path_tex[i]);
-         i++;
+        load_textures(cub, cub->north, texture->door[i]);
+        i++;  
     }
+    load_textures(cub, cub->north, texture->north_text);
+    load_textures(cub, cub->south, texture->south_text);
+    load_textures(cub, cub->east, texture->east_text);
+    load_textures(cub, cub->weast, texture->east_text);
+    
 }
 
 t_text *get_texture(t_cub *cub)
