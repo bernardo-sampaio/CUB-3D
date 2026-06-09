@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/09 13:40:16 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:12:17 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int     close_game(t_cub *cub)
     while (i < 5)
     {
         if (cub->door[i]->img)
-        mlx_destroy_image(cub->mlx, cub->door[i]->img);
+            mlx_destroy_image(cub->mlx, cub->door[i]->img);
         free(cub->door[i]);
         i++;
     }

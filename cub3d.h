@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/09 13:40:21 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:13:08 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_player
     int hit;
     int hit_door;
     int door_frame;
+    int weapon_frame;
+    int weapon_tick;
     int side;
     int line_height;
     int drawend;
