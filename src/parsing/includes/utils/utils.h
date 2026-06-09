@@ -22,6 +22,7 @@ void					free_mat(char **mat);
 void					free_texture(t_texture *texture_dir);
 void					free_color(t_color *color);
 int						ft_strcmp(const char *s1, const char *s2);
+int						rgb_to_hex(int r, int g, int b);
 bool					is_only_whitespace(char *str);
 bool					ft_isspace(int c);
 bool					count_comma(char *color);

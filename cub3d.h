@@ -24,9 +24,6 @@
 # define OFFSET_Y 10
 # define WIDTH 1920
 # define HEIGHT 1080
-# define SKY_BULE_COLOR 0x191970
-# define BROWN_C0LOR 0x2F4F4F
-# define WALL_COLOR 0xBAE0D2F4
 
 typedef struct  s_text
 {
@@ -95,6 +92,7 @@ typedef struct s_cub
 	int		h;
     t_player *player;
     t_texture *texture;
+    t_color *color;
     t_text  *north;
     t_text  *south;
     t_text  *weast;

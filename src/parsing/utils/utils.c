@@ -72,3 +72,8 @@ bool	count_comma(char *color)
 	error_msg("Invalid color");
 	return (false);
 }
+
+int	rgb_to_hex(int r, int g, int b)
+{
+	return ((r << 16) | (g << 8) | b);
+}

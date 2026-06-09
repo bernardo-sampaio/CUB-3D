@@ -98,7 +98,8 @@ bool	is_valid_char(t_map *map)
 				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
 				map->tiles.player++;
 			else if (map->grid[i][j] != '0' && map->grid[i][j] != '1'
-				&& map->grid[i][j] != '\n' && map->grid[i][j] != ' ' && map->grid[i][j] != 'D')
+				&& map->grid[i][j] != '\n' && map->grid[i][j] != ' '
+				&& map->grid[i][j] != 'D')
 			{
 				free_mat(map->grid);
 				return (error_msg("Invalid char in map"), false);

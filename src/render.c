@@ -119,7 +119,7 @@ int    render_frame(t_cub *cub)
         y = 0;
         while (y < cub->player->drawstart)
         {
-                put_pixel_image(cub, x, y, SKY_BULE_COLOR);
+                put_pixel_image(cub, x, y, rgb_to_hex(cub->color->ceiling_rgb[0], cub->color->ceiling_rgb[1], cub->color->ceiling_rgb[2]));
                 y++;
         }
         while (y <= cub->player->drawend)
@@ -136,7 +136,7 @@ int    render_frame(t_cub *cub)
         }
         while (y < HEIGHT)
         {
-            put_pixel_image(cub, x, y, BROWN_C0LOR);
+            put_pixel_image(cub, x, y, rgb_to_hex(cub->color->floor_rgb[0], cub->color->floor_rgb[1], cub->color->floor_rgb[2]));
             y++;
         }
         x++;

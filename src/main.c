@@ -101,7 +101,7 @@ int main(int ac, char **av)
 	if (final_check(cub3d.file) == false)
 		return (free_structs(&cub3d), 1);
     cub.player = &player;
-    
+    cub.color = &cub3d.color;
     initialize_player(&player);
     cub.player->move_down = 0;
     cub.player->move_up = 0;

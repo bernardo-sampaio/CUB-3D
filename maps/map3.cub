@@ -1,10 +1,10 @@
-NO ./sprites/xpm/north.xpm
-SO ./sprites/xpm/south.xpm
+NO ./sprites/xpm/parede.xpm
+SO ./sprites/xpm/parede1.xpm
 WE ./sprites/xpm/parede1.xpm
 EA ./sprites/xpm/parede.xpm
 
-F 30,30,35
-C 10,10,15
+F 4, 5, 41
+C 23, 27, 110
 
 111111111111111111111111111111111111111111111111111111
 100000000000000000000000010000000000000000000000000001
