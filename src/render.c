@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/08 16:49:51 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/09 12:56:40 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
 {
     tex->img = mlx_xpm_file_to_image(cub->mlx, path, &tex->w, &tex->h);
     if (!tex->img)
-        exit(1);
+        close_game(cub);
     tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
 }
 void    init_textures(t_cub *cub, t_texture *texture)
@@ -28,17 +28,19 @@ void    init_textures(t_cub *cub, t_texture *texture)
     texture->door[3] = ft_strdup("./sprites/xpm/door_06.xpm");
     texture->door[4] = ft_strdup("./sprites/xpm/door_10.xpm");
     
-    i = 0;
-    while(i < 5)
-    {
-        load_textures(cub, cub->north, texture->door[i]);
-        i++;  
-    }
     load_textures(cub, cub->north, texture->north_text);
     load_textures(cub, cub->south, texture->south_text);
     load_textures(cub, cub->east, texture->east_text);
     load_textures(cub, cub->weast, texture->east_text);
-    
+    i = 0;
+    while(i < 5)
+    {
+        cub->door[i] = malloc(sizeof(t_text));
+        if (!cub->door[i])
+            close_game(cub);
+        load_textures(cub, cub->door[i], texture->door[i]);
+        i++;  
+    }
 }
 
 t_text *get_texture(t_cub *cub)
