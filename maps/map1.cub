@@ -1,0 +1,15 @@
+NO ./sprites/xpm/north.xpm
+SO ./sprites/xpm/east.xpm
+WE ./sprites/xpm/chao.xpm
+EA ./sprites/xpm/chao.xpm
+
+C 2,1,9
+F 100,100,2
+
+1111111111
+1100000011
+110E000001
+1010011D11             
+1000000001
+1000000001
+1111111111            
