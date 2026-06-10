@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void    go_right(t_player *player)
+static void    go_right(t_player *player)
 {
     double new_x;
     double new_y;
@@ -38,7 +38,8 @@ void    go_right(t_player *player)
          player->map[(int)(new_y + margin_y)][(int)player->pos_x] == 'O'))
         player->pos_y = new_y;
 }
-void    go_left(t_player *player)
+
+static  void    go_left(t_player *player)
 {
     double new_x;
     double new_y;
@@ -64,7 +65,7 @@ void    go_left(t_player *player)
         player->map[(int)(new_y + margin_y)][(int)player->pos_x] == 'O'))
         player->pos_y = new_y;
 }
-void    backward(t_player *player)
+static  void    backward(t_player *player)
 {
     double new_x;
     double new_y;
@@ -90,7 +91,7 @@ void    backward(t_player *player)
         player->map[(int)(new_y + margin_y)][(int)player->pos_x] == 'O'))
         player->pos_y = new_y;
 }
-void forward(t_player *player)
+static  void forward(t_player *player)
 {
     double new_x; 
     double new_y;

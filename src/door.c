@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:39:28 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/05 13:42:36 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/10 12:38:12 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void    update_door(t_cub *cub)
 {
+    static int delay;
     int x;
     int y;
-    int static delay = 0;
     
     delay++;
     if (delay < 6)

@@ -15,7 +15,6 @@
 
 # include"minilibx-linux/mlx.h"
 #include "src/parsing/includes/core/cub3d_parsing.h"
-# include<stdio.h>
 # include<fcntl.h>
 # include<math.h> 
 
@@ -126,10 +125,6 @@ void    open_close_door(t_cub *cub);
 // Game
 int     close_game(t_cub *cub);
 void    update_door(t_cub *cub);
-
-//Map
-char    **ft_get_map(t_player *player, char *file);
-
 
 // Hooks
 int     mouse_move(int x, int y, t_cub *cub);

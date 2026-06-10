@@ -6,19 +6,17 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/08 16:16:32 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/06/10 12:43:34 by ealbino          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS      = -Wall -Wextra -Werror -Isrc/parsing/includes -Isrc/parsing/libft -I./ -g
+CFLAGS      = -Wall -Wextra -Werror -Isrc/parsing/includes -Isrc/parsing/libft -I./
 
-NAME        = cub3d
+NAME        = cub3D
 
 MLX_DIR = minilibx-linux
 
 MLX = $(MLX_DIR)/libmlx_Linux.a
-
-GNL_DIR = get_next_line
 
 LIBFT_DIR   = src/parsing/libft
 
@@ -27,7 +25,6 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 HEADER       = cub3d.h src/parsing/includes/core/cub3d_parsing.h
 OBJS = \
 	src/main.o \
-	src/raycasting_map.o \
 	src/player_position.o \
 	src/render.o\
 	src/dda.o src/raycast.o \

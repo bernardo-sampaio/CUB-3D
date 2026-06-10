@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void    draw_player(t_cub *cub)
+static void    draw_player(t_cub *cub)
 {
     int py;
     int px;
@@ -30,7 +30,7 @@ void    draw_player(t_cub *cub)
     }
 }
 
-void    draw_tile(t_cub *cub, int x, int y, int color)
+static void    draw_tile(t_cub *cub, int x, int y, int color)
 {
     int py;
     int px;
