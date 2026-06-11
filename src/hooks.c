@@ -67,6 +67,5 @@ int mouse_move(int x, int y, t_cub *cub)
         return (0);
     rotate_player(cub->player, delta_x * 0.001);
     mlx_mouse_move(cub->mlx, cub->win, center_x, HEIGHT / 2);
-    mlx_mouse_hide(cub->mlx, cub->win);
     return (0);
 }

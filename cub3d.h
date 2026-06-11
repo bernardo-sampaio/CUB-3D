@@ -100,6 +100,7 @@ typedef struct s_cub
     t_text  *west;
     t_text  *east;
     t_text  *door[5];
+    t_cub3d *cub3d;
 } t_cub;
 
 // Player

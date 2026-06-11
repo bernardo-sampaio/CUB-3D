@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/11 14:38:09 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 18:21:56 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,25 @@ int     close_game(t_cub *cub)
         free(cub->door[i]);
         i++;
     }
+    free(cub->cub3d->texture.door[0]);
+    free(cub->cub3d->texture.door[1]);
+    free(cub->cub3d->texture.door[2]);
+    free(cub->cub3d->texture.door[3]);
+    free(cub->cub3d->texture.door[4]);
+    free(cub->cub3d->texture.weap);
+    mlx_destroy_image(cub->mlx, cub->weap->img);
+    mlx_destroy_image(cub->mlx, cub->north->img);
+    mlx_destroy_image(cub->mlx, cub->south->img);
+    mlx_destroy_image(cub->mlx, cub->east->img);
+    mlx_destroy_image(cub->mlx, cub->west->img);
+    free_structs(cub->cub3d);
     if (cub && cub->mlx && cub->img)
-    mlx_destroy_image(cub->mlx, cub->img);
+	    mlx_destroy_image(cub->mlx, cub->img);
     if (cub && cub->mlx && cub->win)
-    mlx_destroy_window(cub->mlx, cub->win);
+	    mlx_destroy_window(cub->mlx, cub->win);
     if (cub && cub->mlx)
-        mlx_destroy_display(cub->mlx);
+	    mlx_destroy_display(cub->mlx);
+    free(cub->mlx);
     exit(1);
     return (0);
 }
@@ -84,26 +97,28 @@ int main(int ac, char **av)
     cub.east = &east;
     cub.west = &west;
     cub.weap = &weap;
+
+    cub.cub3d = &cub3d;
     if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
     if (validate_extension((av[1]), ".cub") == false)
 		return (error_msg("Invalid file extension. Expected .cub\n"), 1);
-	ft_memset(&cub3d, 0, sizeof(t_cub3d));
-	if (check_file(av[1], &cub3d.file) == false)
-		return (ft_lstclear(&cub3d.file.lines, free), 1);
-	if (check_texture(&cub3d.file, &cub3d.texture) == false)
-		return (free_structs(&cub3d), 1);
-	if (check_color(&cub3d.file, &cub3d.color) == false)
-		return (free_structs(&cub3d), 1);
-	if (check_map(&cub3d.file, &cub3d.map) == false)
-		return (free_structs(&cub3d), 1);
-    player.map = cub3d.map.grid;
-    player.map_height = cub3d.map.height;
-    player.map_width = cub3d.map.width;
-	if (final_check(cub3d.file) == false)
-		return (free_structs(&cub3d), 1);
+	ft_memset(cub.cub3d, 0, sizeof(t_cub3d));
+	if (check_file(av[1], &cub.cub3d->file) == false)
+		return (ft_lstclear(&cub.cub3d->file.lines, free), 1);
+	if (check_texture(&cub.cub3d->file, &cub.cub3d->texture) == false)
+		return (free_structs(cub.cub3d), 1);
+	if (check_color(&cub.cub3d->file, &cub.cub3d->color) == false)
+		return (free_structs(cub.cub3d), 1);
+	if (check_map(&cub.cub3d->file, &cub.cub3d->map) == false)
+		return (free_structs(cub.cub3d), 1);
+    player.map = cub.cub3d->map.grid;
+    player.map_height = cub.cub3d->map.height;
+    player.map_width = cub.cub3d->map.width;
+	if (final_check(cub.cub3d->file) == false)
+		return (free_structs(cub.cub3d), 1);
     cub.player = &player;
-    cub.color = &cub3d.color;
+    cub.color = &cub.cub3d->color;
     cub.player->weapon_timer = 0;
     initialize_player(&player);
     cub.player->move_down = 0;
@@ -117,10 +132,10 @@ int main(int ac, char **av)
     cub.mlx = mlx_init();
     if (!cub.mlx)
     {
-        free_structs(&cub3d);
+        free_structs(cub.cub3d);
         close_game(&cub);
     }
-    init_textures(&cub, &cub3d.texture);
+    init_textures(&cub, &cub.cub3d->texture);
     cub.win = mlx_new_window(cub.mlx,  WIDTH, HEIGHT, "cub3d");
     cub.img = mlx_new_image(cub.mlx, WIDTH, HEIGHT);
     cub.addr = mlx_get_data_addr(cub.img, &cub.bpp, &cub.size_line, &cub.endian);
