@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/09 15:12:54 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 10:23:04 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void    init_textures(t_cub *cub, t_texture *texture)
     texture->door[2] = ft_strdup("./sprites/xpm/door_04.xpm");
     texture->door[3] = ft_strdup("./sprites/xpm/door_06.xpm");
     texture->door[4] = ft_strdup("./sprites/xpm/door_10.xpm");
+    texture->weap = ft_strdup("./sprites/xpm/weapon1.xpm");
     
     load_textures(cub, cub->north, texture->north_text);
     load_textures(cub, cub->south, texture->south_text);
     load_textures(cub, cub->east, texture->east_text);
-    load_textures(cub, cub->weast, texture->east_text);
+    load_textures(cub, cub->west, texture->west_text);
+    load_textures(cub, cub->weap, texture->weap);
     i = 0;
     while(i < 5)
     {
@@ -54,7 +56,7 @@ t_text *get_texture(t_cub *cub)
     if (cub->player->side == 0)
     {
         if (cub->player->raydir_x > 0)
-            return (cub->weast);
+            return (cub->west);
         else
             return (cub->east);
     }
@@ -141,6 +143,7 @@ int    render_frame(t_cub *cub)
         }
         x++;
     }
+    draw_weapon(cub);
     draw_minimap(cub);
     return (0);
 }

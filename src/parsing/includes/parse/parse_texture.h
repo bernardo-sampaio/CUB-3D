@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 18:32:19 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/09 15:12:32 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 09:47:47 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_texture
 	char	*south_text;
 	char	*west_text;
 	char	*east_text;
+	char  	*weap;
 	char	*door[5];
 }			t_texture;
 

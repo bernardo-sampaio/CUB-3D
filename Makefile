@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/10 12:43:34 by ealbino          ###   ########.fr        #
+#    Updated: 2026/06/11 14:39:18 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OBJS = \
 	src/door.o \
 	src/rotate_player.o \
 	src/minimap.o \
+	src/weapon.o \
 	src/parsing/get_next_line.o \
 	src/parsing/parse_file.o \
 	src/parsing/parse_color.o \

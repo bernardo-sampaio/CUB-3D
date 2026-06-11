@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/09 15:13:08 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 09:52:42 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_player
     int move_right;
     int rot_left;
     int rot_right;
+    int is_moving;
+    double  weapon_timer;
 } t_player;
 
 typedef struct s_cub
@@ -92,9 +94,10 @@ typedef struct s_cub
     t_player *player;
     t_texture *texture;
     t_color *color;
+    t_text  *weap;
     t_text  *north;
     t_text  *south;
-    t_text  *weast;
+    t_text  *west;
     t_text  *east;
     t_text  *door[5];
 } t_cub;
@@ -120,7 +123,7 @@ void    init_textures(t_cub *cub, t_texture *texture);
 int    put_pixel_image(t_cub *cub, int x, int y, int color);
 void    draw_minimap(t_cub *cub);
 void    open_close_door(t_cub *cub);
-
+void    draw_weapon(t_cub *cub);
 
 // Game
 int     close_game(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 18:15:37 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/08 16:10:12 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 09:57:40 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int key_press(int key, t_cub *cub)
 {
     if (key == 119)
+    {
         cub->player->move_up = 1;
+        cub->player->is_moving = 1;   
+    }
     if (key == 115)
         cub->player->move_down = 1;
     if (key == 100)
@@ -33,7 +36,10 @@ int key_press(int key, t_cub *cub)
 int key_release(int key, t_cub *cub)
 {
     if (key == 119)
+    {
         cub->player->move_up = 0;
+        cub->player->is_moving = 0;
+    }
     if (key == 115)
         cub->player->move_down = 0;
     if (key == 100)

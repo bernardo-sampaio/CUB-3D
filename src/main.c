@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/09 15:12:17 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:38:09 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,14 @@ int main(int ac, char **av)
     t_text north;
     t_text south;
     t_text east;
-    t_text weast;
+    t_text west;
+    t_text weap;
     
     cub.north = &north;
     cub.south = &south;
     cub.east = &east;
-    cub.weast = &weast;
+    cub.west = &west;
+    cub.weap = &weap;
     if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
     if (validate_extension((av[1]), ".cub") == false)
@@ -102,6 +104,7 @@ int main(int ac, char **av)
 		return (free_structs(&cub3d), 1);
     cub.player = &player;
     cub.color = &cub3d.color;
+    cub.player->weapon_timer = 0;
     initialize_player(&player);
     cub.player->move_down = 0;
     cub.player->move_up = 0;
@@ -109,6 +112,7 @@ int main(int ac, char **av)
     cub.player->move_right = 0;
     cub.player->rot_left = 0;
     cub.player->rot_right = 0;
+    cub.player->is_moving = 0;
     cub.key_close = 0;
     cub.mlx = mlx_init();
     if (!cub.mlx)
