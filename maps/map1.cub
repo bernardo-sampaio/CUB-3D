@@ -1,7 +1,7 @@
-NO ./sprites/xpm/north.xpm
-SO ./sprites/xpm/east.xpm
-WE ./sprites/xpm/chao.xpm
-EA ./sprites/xpm/chao.xpm
+NO ./sprites/north.xpm
+SO ./sprites/east.xpm
+WE ./sprites/chao.xpm
+EA ./sprites/chao.xpm
 
 C 2,1,9
 F 100,100,2

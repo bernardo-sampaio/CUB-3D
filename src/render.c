@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 18:01:04 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/11 10:23:04 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:27:46 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void load_textures(t_cub *cub, t_text *tex, char *path)
 void    init_textures(t_cub *cub, t_texture *texture)
 {
     int i;
-    texture->door[0] = ft_strdup("./sprites/xpm/door_00.xpm");
-    texture->door[1] = ft_strdup("./sprites/xpm/door_02.xpm");
-    texture->door[2] = ft_strdup("./sprites/xpm/door_04.xpm");
-    texture->door[3] = ft_strdup("./sprites/xpm/door_06.xpm");
-    texture->door[4] = ft_strdup("./sprites/xpm/door_10.xpm");
-    texture->weap = ft_strdup("./sprites/xpm/weapon1.xpm");
+    texture->door[0] = ft_strdup("./sprites/door_00.xpm");
+    texture->door[1] = ft_strdup("./sprites/door_02.xpm");
+    texture->door[2] = ft_strdup("./sprites/door_04.xpm");
+    texture->door[3] = ft_strdup("./sprites/door_06.xpm");
+    texture->door[4] = ft_strdup("./sprites/door_10.xpm");
+    texture->weap = ft_strdup("./sprites/weapon1.xpm");
     
     load_textures(cub, cub->north, texture->north_text);
     load_textures(cub, cub->south, texture->south_text);

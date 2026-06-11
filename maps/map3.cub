@@ -1,7 +1,7 @@
-NO ./sprites/xpm/parede.xpm
-SO ./sprites/xpm/parede1.xpm
-WE ./sprites/xpm/parede1.xpm
-EA ./sprites/xpm/parede.xpm
+NO ./sprites/parede.xpm
+SO ./sprites/parede1.xpm
+WE ./sprites/parede1.xpm
+EA ./sprites/parede.xpm
 
 F 2, 1, 9
 C 40, 41, 40

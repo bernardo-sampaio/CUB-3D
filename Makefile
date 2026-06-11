@@ -6,11 +6,11 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/11 14:39:18 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/06/11 16:05:56 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS      = -Wall -Wextra -Werror -Isrc/parsing/includes -Isrc/parsing/libft -I./
+CFLAGS      = -Wall -Wextra -Werror -g -Isrc/parsing/includes -Isrc/parsing/libft -I./
 
 NAME        = cub3D
 
