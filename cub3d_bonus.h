@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/12 12:12:11 by bsampaio         ###   ########.fr       */
+/*   Created: 2026/06/12 09:34:33 by bsampaio          #+#    #+#             */
+/*   Updated: 2026/06/15 14:21:41 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include"minilibx-linux/mlx.h"
-# include "src/mandatory/parsing/includes/core/cub3d_parsing.h"
+#include "src/bonus/parsing/includes/core/cub3d_parsing.h"
 # include<fcntl.h>
 # include<math.h> 
 
@@ -57,6 +57,8 @@ typedef struct s_player
     int step_x;
     int step_y;
     int hit;
+    int hit_door;
+    int door_frame;
     int side;
     int line_height;
     int drawend;
@@ -69,9 +71,11 @@ typedef struct s_player
     int move_right;
     int rot_left;
     int rot_right;
+    int is_moving;
+    double  weapon_timer;
 } t_player;
 
-typedef struct s_cub
+typedef struct s_cub_bonus
 {
     void    *mlx;
     void    *win;
@@ -88,12 +92,14 @@ typedef struct s_cub
     t_player *player;
     t_texture *texture;
     t_color *color;
+    t_text  *weap;
     t_text  *north;
     t_text  *south;
     t_text  *west;
     t_text  *east;
+    t_text  *door[5];
     t_cub3d *cub3d;
-} t_cub;
+} t_cub_bonus;
 
 // Player
 void    initialize_player(t_player *player);
@@ -101,7 +107,7 @@ void    rotate_player(t_player *player, double angle);
 void    rotate_right(t_player *player);
 void    rotate_left(t_player *player);
 int     in_bounds(t_player *player, int x, int y);
-void    move_player(t_cub *cub);
+void    move_player(t_cub_bonus *cub);
 
 // Raycasting
 void    ft_dda(t_player *player);
@@ -111,20 +117,20 @@ void    calculate_walldist(t_player *player);
 
 
 // Rendering
-int     render_frame(t_cub *cub);
-void    init_textures(t_cub *cub, t_texture *texture);
-int    put_pixel_image(t_cub *cub, int x, int y, int color);
-void    draw_minimap(t_cub *cub);
-void    open_close_door(t_cub *cub);
-void    draw_weapon(t_cub *cub);
+int     render_frame(t_cub_bonus *cub);
+void    init_textures(t_cub_bonus *cub, t_texture *texture);
+int    put_pixel_image(t_cub_bonus *cub, int x, int y, int color);
+void    draw_minimap(t_cub_bonus *cub);
+void    open_close_door(t_cub_bonus *cub);
+void    draw_weapon(t_cub_bonus *cub);
 
 // Game
-int     close_game(t_cub *cub);
-void    update_door(t_cub *cub);
+int     close_game(t_cub_bonus *cub);
+void    update_door(t_cub_bonus *cub);
 
 // Hooks
-int     mouse_move(int x, int y, t_cub *cub);
-int     key_press(int key, t_cub *cub);
-int     key_release(int key, t_cub *cub);
+int     mouse_move(int x, int y, t_cub_bonus *cub);
+int     key_press(int key, t_cub_bonus *cub);
+int     key_release(int key, t_cub_bonus *cub);
 
 #endif
