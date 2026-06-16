@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:45:18 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:06:31 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:26:37 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ bool	validate_extension(char *filename, char *xtens)
 	after_dot = ft_strrchr(filename, '.');
 	if (ft_strcmp(after_dot, xtens) == 0)
 		return (true);
+	ft_putstr_fd("Error\n File [", 2);
+	ft_putstr_fd(filename, 2);
+	ft_putendl_fd("] has not the extension required \".xpm\"", 2);
 	return (false);
 }
 
