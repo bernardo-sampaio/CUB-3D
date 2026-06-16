@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_utils.c                                  :+:      :+:    :+:   */
+/*   parse_map_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:31:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/08 16:23:23 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:12:26 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d_parsing.h"
+#include "core/cub3d_parsing_bonus.h"
 
 bool	is_map_line(char *line)
 {

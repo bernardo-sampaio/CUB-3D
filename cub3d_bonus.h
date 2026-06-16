@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:34:33 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/15 14:21:41 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:06:05 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_BONUS_H
 
 # include"minilibx-linux/mlx.h"
-#include "src/bonus/parsing/includes/core/cub3d_parsing.h"
+#include "src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h"
 # include<fcntl.h>
 # include<math.h> 
 

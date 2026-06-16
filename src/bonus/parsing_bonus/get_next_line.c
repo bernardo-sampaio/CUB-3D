@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 22:28:06 by ealbino           #+#    #+#             */
-/*   Updated: 2025/11/30 11:06:07 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:11:45 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d_parsing.h"
+#include "core/cub3d_parsing_bonus.h"
 
 static char	*ft_strjoin_secure(char *dst, const char *buf)
 {

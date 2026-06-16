@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
+/*   parse_file_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:45:18 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:06:31 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:18:28 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d_parsing.h"
+#include "core/cub3d_parsing_bonus.h"
 
 bool	validate_extension(char *filename, char *xtens)
 {

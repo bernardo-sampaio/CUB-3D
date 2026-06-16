@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.c                                      :+:      :+:    :+:   */
+/*   parse_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 18:33:32 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/04 15:34:44 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:11:53 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d_parsing.h"
+#include "core/cub3d_parsing_bonus.h"
 
 static char	*remove_first_char(char *content)
 {

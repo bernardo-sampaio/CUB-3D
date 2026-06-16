@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/15 15:18:56 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/06/16 10:18:24 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT_DIR   = src/mandatory/parsing/libft
 
 LIBFT       = $(LIBFT_DIR)/libft.a
 
-CFLAGS      = -Wall -Wextra -Werror -g -Isrc/mandatory/parsing/includes -Isrc/mandatory/parsing/libft -I./
+CFLAGS      = -Wall -Wextra -Werror -Isrc/mandatory/parsing/includes -Isrc/mandatory/parsing/libft -I./
 
 HEADER       = cub3d.h src/mandatory/parsing/includes/core/cub3d_parsing.h
 
@@ -61,13 +61,13 @@ OBJS = \
 #*																		  *#
 #**************************************************************************#
 
-LIBFT_DIR_BONUS   = src/bonus/parsing/libft
+LIBFT_DIR_BONUS   = src/bonus/parsing_bonus/libft
 
 LIBFT_BONUS       = $(LIBFT_DIR_BONUS)/libft.a
 
-CFLAGS_BONUS = -Wall -Wextra -Werror -Isrc/bonus/parsing/includes -Isrc/bonus/parsing/libft -I./
+CFLAGS_BONUS = -Wall -Wextra -Werror -Isrc/bonus/parsing_bonus/includes_bonus -Isrc/bonus/parsing_bonus/libft -I./
 
-HEADER_BONUS = cub3d_bonus.h src/bonus/parsing/includes/core/cub3d_parsing.h
+HEADER_BONUS = cub3d_bonus.h src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h
 
 OBJS_BONUS = \
 	src/bonus/main_bonus.o \
@@ -81,17 +81,17 @@ OBJS_BONUS = \
 	src/bonus/raycast_bonus.o \
 	src/bonus/player_position_bonus.o \
 	src/bonus/rotate_player_bonus.o \
-	src/bonus/parsing/get_next_line.o \
-	src/bonus/parsing/parse_file.o \
-	src/bonus/parsing/parse_color.o \
-	src/bonus/parsing/parse_color_utils.o \
-	src/bonus/parsing/parse_texture.o \
-	src/bonus/parsing/parse_texture_utils.o \
-	src/bonus/parsing/parse_map.o \
-	src/bonus/parsing/parse_map_utils.o \
-	src/bonus/parsing/error/error.o \
-	src/bonus/parsing/utils/utils.o \
-	src/bonus/parsing/utils/cleanup.o
+	src/bonus/parsing_bonus/get_next_line.o \
+	src/bonus/parsing_bonus/parse_file_bonus.o \
+	src/bonus/parsing_bonus/parse_color_bonus.o \
+	src/bonus/parsing_bonus/parse_color_utils_bonus.o \
+	src/bonus/parsing_bonus/parse_texture_bonus.o \
+	src/bonus/parsing_bonus/parse_texture_utils_bonus.o \
+	src/bonus/parsing_bonus/parse_map_bonus.o \
+	src/bonus/parsing_bonus/parse_map_utils_bonus.o \
+	src/bonus/parsing_bonus/error_bonus/error_bonus.o \
+	src/bonus/parsing_bonus/utils_bonus/utils_bonus.o \
+	src/bonus/parsing_bonus/utils_bonus/cleanup_bonus.o
 
 
 #**************************************************************************#

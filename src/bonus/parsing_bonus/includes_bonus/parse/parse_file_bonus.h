@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.h                                       :+:      :+:    :+:   */
+/*   parse_file_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:53:39 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:02:36 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:03:32 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_FILE_H
-# define PARSE_FILE_H
+#ifndef PARSE_FILE_BONUS_H
+# define PARSE_FILE_BONUS_H
 # include <fcntl.h>
 # include <stdbool.h>
 # include <string.h>

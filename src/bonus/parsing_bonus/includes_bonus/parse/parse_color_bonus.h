@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.h                                      :+:      :+:    :+:   */
+/*   parse_color_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 18:32:09 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:00:35 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:03:09 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_COLOR_H
-# define PARSE_COLOR_H
+#ifndef PARSE_COLOR_BONUS_H
+# define PARSE_COLOR_BONUS_H
 
 typedef struct s_color
 {

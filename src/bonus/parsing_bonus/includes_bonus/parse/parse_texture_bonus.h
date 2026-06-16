@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_texture.h                                    :+:      :+:    :+:   */
+/*   parse_texture_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 18:32:19 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/15 14:28:36 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:04:11 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_TEXTURE_H
-# define PARSE_TEXTURE_H
+#ifndef PARSE_TEXTURE_BONUS_H
+# define PARSE_TEXTURE_BONUS_H
 
 typedef struct s_texture
 {

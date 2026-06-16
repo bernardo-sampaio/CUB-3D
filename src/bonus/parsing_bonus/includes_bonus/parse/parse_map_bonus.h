@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.h                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:08:24 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/19 18:03:33 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:03:52 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_MAP_H
-# define PARSE_MAP_H
+#ifndef PARSE_MAP_BONUS_H
+# define PARSE_MAP_BONUS_H
 
 typedef struct s_tiles
 {
