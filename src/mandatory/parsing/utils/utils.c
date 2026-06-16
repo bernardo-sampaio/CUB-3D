@@ -73,7 +73,7 @@ int	rgb_to_hex(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
-bool how_many_colors(char *ident)
+bool	how_many_colors(char *ident)
 {
 	if (ft_strlen(ident) > 1)
 		return (true);

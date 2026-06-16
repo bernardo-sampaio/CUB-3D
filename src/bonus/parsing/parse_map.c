@@ -79,18 +79,18 @@ static bool	tell_ma_gossip(t_map *map)
 					|| (j > 0 && map->grid[i][j - 1] == ' ')
 					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
 					|| (i > 0 && map->grid[i - 1][j] == ' '))
-					{
-						ft_putstr_fd("Error\nThe character [", 2);
-						ft_putchar_fd(map->grid[i][j], 2);
-						ft_putendl_fd("] is next to a space", 2);
-						ft_putstr_fd("check position: [", 2);
-						ft_putnbr_fd(i, 2);
-						ft_putchar_fd(']', 2);
-						ft_putchar_fd('[', 2);
-						ft_putnbr_fd(j, 2);
-						ft_putendl_fd("]", 2);
-						return (false);
-					}
+				{
+					ft_putstr_fd("Error\nThe character [", 2);
+					ft_putchar_fd(map->grid[i][j], 2);
+					ft_putendl_fd("] is next to a space", 2);
+					ft_putstr_fd("check position: [", 2);
+					ft_putnbr_fd(i, 2);
+					ft_putchar_fd(']', 2);
+					ft_putchar_fd('[', 2);
+					ft_putnbr_fd(j, 2);
+					ft_putendl_fd("]", 2);
+					return (false);
+				}
 			}
 			j++;
 		}

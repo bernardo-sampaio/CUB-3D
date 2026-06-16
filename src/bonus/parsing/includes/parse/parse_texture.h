@@ -19,7 +19,7 @@ typedef struct s_texture
 	char	*south_text;
 	char	*west_text;
 	char	*east_text;
-	char  	*weap;
+	char	*weap;
 	char	*door[5];
 }			t_texture;
 

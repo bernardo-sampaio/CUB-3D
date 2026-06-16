@@ -14,5 +14,7 @@
 # define ERROR_H
 
 void	error_msg(char *msg);
+void	for_gossip(char c, int line, int col);
+void	for_walls(int line, int col);
 
 #endif

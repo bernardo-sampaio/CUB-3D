@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:31:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/16 09:59:39 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 11:36:11 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,10 @@ bool	after_map(t_list *map)
 	grasp = map;
 	while (grasp)
 	{
-		if (is_map_line((char *)grasp->content))
+		if (is_only_whitespace((char *)grasp->content) == false)
 		{
 			error_msg("Invalid map format: non-map line found after map lines");
-			return (false);
-		}
-		else if (is_only_whitespace((char *)grasp->content) == false)
-		{
-			error_msg("Invalid map format: non-map line found after map lines");
+			ft_putendl_fd((char *)grasp->content, 2);
 			return (false);
 		}
 		grasp = grasp->next;
