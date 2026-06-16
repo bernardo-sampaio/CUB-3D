@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 10:34:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/16 10:01:51 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:11:00 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int						ft_strcmp(const char *s1, const char *s2);
 int						rgb_to_hex(int r, int g, int b);
 bool					is_only_whitespace(char *str);
 bool					count_comma(char *color);
+bool					how_many_colors(char *ident);
 
 #endif
