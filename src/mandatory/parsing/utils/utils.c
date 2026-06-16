@@ -6,16 +6,11 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 19:48:57 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/16 10:34:05 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:00:50 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/cub3d_parsing.h"
-
-bool	ft_isspace(int c)
-{
-	return (c == ' ' || (c >= '\t' && c <= '\r'));
-}
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

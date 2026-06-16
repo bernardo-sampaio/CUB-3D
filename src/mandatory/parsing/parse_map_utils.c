@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:31:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/15 14:49:21 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/16 09:59:39 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	is_map_line(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] && ft_isspace(line[i]))
+	while ((line[i] && line[i] == ' ') || (line[i] >= '\t' && line[i] <= '\r'))
 		i++;
 	if (!line[i])
 		return (false);
