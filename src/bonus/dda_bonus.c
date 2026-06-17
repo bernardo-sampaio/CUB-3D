@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 11:27:57 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/12 11:33:32 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:28:33 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void    ft_dda(t_player *player)
             {
                 player->door_frame = player->map[player->map_y][player->map_x] - '2' + 1;
                 if (player->door_frame > 4)
-                   player->door_frame = 4; 
+                   player->door_frame = 4;
             }
         }
     }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 19:37:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/16 10:25:00 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 11:26:07 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 	{
 		mat = ft_split((char *)head->content, ' ');
 		if (helper_validation(mat, chars, texture_dir) == false)
-			return (free(chars), false);
+			return (free(chars), free_mat(mat), false);
 		free_mat(mat);
 		head = head->next;
 	}

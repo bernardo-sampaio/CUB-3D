@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:19:22 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/15 14:25:29 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:18:21 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    init_textures(t_cub_bonus *cub, t_texture *texture)
         if (!cub->door[i])
             close_game(cub);
         load_textures(cub, cub->door[i], texture->door[i]);
-        i++;  
+        i++;
     }
 }
 
