@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/17 16:41:20 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 19:38:51 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,13 +126,12 @@ void    calculate_walldist(t_player *player);
 int     render_frame(t_cub *cub);
 void    init_textures(t_cub *cub, t_texture *texture);
 int    put_pixel_image(t_cub *cub, int x, int y, int color);
-void    draw_minimap(t_cub *cub);
-void    open_close_door(t_cub *cub);
-void    draw_weapon(t_cub *cub);
+void	init_textures(t_cub *cub, t_texture *texture);
+t_text	*get_texture(t_cub *cub);
 
 // Game
 int     close_game(t_cub *cub);
-void    update_door(t_cub *cub);
+int     game_loop(t_cub *cub);
 
 // Hooks
 int     mouse_move(int x, int y, t_cub *cub);

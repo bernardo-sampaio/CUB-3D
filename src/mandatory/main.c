@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/17 19:11:38 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 19:37:27 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,6 @@ static bool	final_check(t_file file)
 		head = head->next;
 	}
 	return (true);
-}
-
-int	game_loop(t_cub *cub)
-{
-	move_player(cub);
-	mlx_clear_window(cub->mlx, cub->win);
-	render_frame(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img, 0, 0);
-	return (0);
-}
-
-int	close_game(t_cub *cub)
-{
-	mlx_destroy_image(cub->mlx, cub->north->img);
-	mlx_destroy_image(cub->mlx, cub->south->img);
-	mlx_destroy_image(cub->mlx, cub->east->img);
-	mlx_destroy_image(cub->mlx, cub->west->img);
-	free_structs(cub->cub3d);
-	if (cub && cub->mlx && cub->img)
-		mlx_destroy_image(cub->mlx, cub->img);
-	if (cub && cub->mlx && cub->win)
-		mlx_destroy_window(cub->mlx, cub->win);
-	if (cub && cub->mlx)
-		mlx_destroy_display(cub->mlx);
-	free(cub->mlx);
-	exit(1);
-	return (0);
 }
 
 int	ft_parse(t_cub *cub, t_player *player, char **av)
