@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/17 10:56:29 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:54:21 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ int main(int ac, char **av)
     if (!cub.mlx)
     {
         free_structs(cub.cub3d);
-        close_game(&cub);
+        exit(1);
     }
     init_textures(&cub, &cub.cub3d->texture);
-    cub.win = mlx_new_window(cub.mlx,  WIDTH, HEIGHT, "cub3d");
+    cub.win = mlx_new_window(cub.mlx,  WIDTH, HEIGHT, "CUB3D");
     cub.img = mlx_new_image(cub.mlx, WIDTH, HEIGHT);
     cub.addr = mlx_get_data_addr(cub.img, &cub.bpp, &cub.size_line, &cub.endian);
     mlx_loop_hook(cub.mlx, game_loop, &cub);

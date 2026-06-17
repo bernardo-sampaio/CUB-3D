@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:45:18 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/17 11:35:53 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 13:20:21 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	validate_extension(char *filename, char *xtens)
 		return (true);
 	ft_putstr_fd("Error\n File [", 2);
 	ft_putstr_fd(filename, 2);
-	ft_putendl_fd("] has not the extension required ", 2);
+	ft_putstr_fd("] has not the extension required ", 2);
 	ft_putendl_fd(xtens, 2);
 	return (false);
 }
