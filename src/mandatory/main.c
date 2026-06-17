@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/16 10:21:58 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 12:54:21 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,23 @@ int main(int ac, char **av)
 
     cub.cub3d = &cub3d;
     if (ac != 2)
-		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
+		  return (error_msg("Usage: ./cub3d map.ber\n"), 1);
     if (validate_extension((av[1]), ".cub") == false)
-		return (1);
-	ft_memset(cub.cub3d, 0, sizeof(t_cub3d));
-	if (check_file(av[1], &cub.cub3d->file) == false)
-		return (ft_lstclear(&cub.cub3d->file.lines, free), 1);
-	if (check_texture(&cub.cub3d->file, &cub.cub3d->texture) == false)
-		return (free_structs(cub.cub3d), 1);
-	if (check_color(&cub.cub3d->file, &cub.cub3d->color) == false)
-		return (free_structs(cub.cub3d), 1);
-	if (check_map(&cub.cub3d->file, &cub.cub3d->map) == false)
-		return (free_structs(cub.cub3d), 1);
-    player.map = cub.cub3d->map.grid;
-    player.map_height = cub.cub3d->map.height;
-    player.map_width = cub.cub3d->map.width;
-	if (final_check(cub.cub3d->file) == false)
-		return (free_structs(cub.cub3d), 1);
+		  return (1);
+	  ft_memset(cub.cub3d, 0, sizeof(t_cub3d));
+	  if (check_file(av[1], &cub.cub3d->file) == false)
+	  	return (ft_lstclear(&cub.cub3d->file.lines, free), 1);
+	  if (check_texture(&cub.cub3d->file, &cub.cub3d->texture) == false)
+	  	return (free_structs(cub.cub3d), 1);
+	  if (check_color(&cub.cub3d->file, &cub.cub3d->color) == false)
+	  	return (free_structs(cub.cub3d), 1);
+	  if (check_map(&cub.cub3d->file, &cub.cub3d->map) == false)
+	  	return (free_structs(cub.cub3d), 1);
+      player.map = cub.cub3d->map.grid;
+      player.map_height = cub.cub3d->map.height;
+      player.map_width = cub.cub3d->map.width;
+	  if (final_check(cub.cub3d->file) == false)
+		  return (free_structs(cub.cub3d), 1);
     cub.player = &player;
     cub.color = &cub.cub3d->color;
     initialize_player(&player);
@@ -111,10 +111,10 @@ int main(int ac, char **av)
     if (!cub.mlx)
     {
         free_structs(cub.cub3d);
-        close_game(&cub);
+        exit(1);
     }
     init_textures(&cub, &cub.cub3d->texture);
-    cub.win = mlx_new_window(cub.mlx,  WIDTH, HEIGHT, "cub3d");
+    cub.win = mlx_new_window(cub.mlx,  WIDTH, HEIGHT, "CUB3D");
     cub.img = mlx_new_image(cub.mlx, WIDTH, HEIGHT);
     cub.addr = mlx_get_data_addr(cub.img, &cub.bpp, &cub.size_line, &cub.endian);
     mlx_loop_hook(cub.mlx, game_loop, &cub);

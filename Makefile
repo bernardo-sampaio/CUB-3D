@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/16 10:18:24 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/06/17 11:22:02 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT_DIR   = src/mandatory/parsing/libft
 
 LIBFT       = $(LIBFT_DIR)/libft.a
 
-CFLAGS      = -Wall -Wextra -Werror -Isrc/mandatory/parsing/includes -Isrc/mandatory/parsing/libft -I./
+CFLAGS      = -Wall -Wextra -Werror -g -Isrc/mandatory/parsing/includes -Isrc/mandatory/parsing/libft -I./
 
 HEADER       = cub3d.h src/mandatory/parsing/includes/core/cub3d_parsing.h
 

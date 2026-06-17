@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 19:37:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/16 10:25:00 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 13:18:43 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static bool	helper_validation(char **mat, char *chars, t_texture *texture_dir)
 		if (validate_extension(pathname, ".xpm") == false)
 		{
 			free(pathname);
+			if (mat)
+				free_mat(mat);
 			return (false);
 		}
 		if (open_file(pathname) == false)

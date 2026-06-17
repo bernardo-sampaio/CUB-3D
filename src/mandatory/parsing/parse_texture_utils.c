@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 11:02:34 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/04 15:48:20 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 11:37:51 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	init_texture(char *direction, char *pathname, t_texture *texture_dir)
 
 void	helper(char *msg, char **mat)
 {
-	free_mat(mat);
+	if (mat)
+		free_mat(mat);
 	if (msg)
 		error_msg(msg);
 }
