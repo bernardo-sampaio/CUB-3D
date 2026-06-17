@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h"
+#include "cub3d_bonus.h"
 
 static bool	load_grid(t_file *file, t_map *map)
 {
@@ -23,7 +23,7 @@ static bool	load_grid(t_file *file, t_map *map)
 	head = file->lines;
 	while (head)
 	{
-		if (is_map_line_bonus((char *)head->content))
+		if (is_map_line((char *)head->content, "01NSEWD "))
 		{
 			map->grid[index] = ft_strdup((char *)head->content);
 			if (map->grid[index] == NULL)
@@ -79,18 +79,7 @@ static bool	tell_ma_gossip_bonus(t_map *map)
 					|| (j > 0 && map->grid[i][j - 1] == ' ')
 					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
 					|| (i > 0 && map->grid[i - 1][j] == ' '))
-				{
-					ft_putstr_fd("Error\nThe character [", 2);
-					ft_putchar_fd(map->grid[i][j], 2);
-					ft_putendl_fd("] is next to a space", 2);
-					ft_putstr_fd("check position: [", 2);
-					ft_putnbr_fd(i, 2);
-					ft_putchar_fd(']', 2);
-					ft_putchar_fd('[', 2);
-					ft_putnbr_fd(j, 2);
-					ft_putendl_fd("]", 2);
-					return (false);
-				}
+					return (for_gossip(map->grid[i][j], i, j), false);
 			}
 			j++;
 		}
@@ -132,6 +121,8 @@ bool	check_map_bonus(t_file *file, t_map *map)
 	if (map->height <= 3 && map->width <= 3)
 		return (error_msg("Map too small"), false);
 	if (normalize_grid(map) == false)
+		return (false);
+	if (is_valid_char_bonus(map) == false)
 		return (false);
 	if (map->tiles.player != 1)
 	{

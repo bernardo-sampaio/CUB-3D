@@ -13,7 +13,6 @@
 #ifndef PARSE_MAP_BONUS_H
 # define PARSE_MAP_BONUS_H
 
-bool		is_map_line_bonus(char *line);
 int			count_map_lines_bonus(t_file *file);
 bool		after_map_bonus(t_list *map);
 bool		is_valid_char_bonus(t_map *map);

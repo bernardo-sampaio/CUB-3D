@@ -24,11 +24,14 @@ static bool	final_check(t_file file)
 		line = (char *)head->content;
 		mat = ft_split(line, 32);
 		if (line[0] != 'F' && line[0] != 'C'
-			&& identify_direction(mat[0], NULL) == false && !is_map_line(line)
+			&& identify_direction(mat[0], NULL) == false && !is_map_line(line, "01NSEW ")
 			&& !is_only_whitespace(line))
 		{
 			free_mat(mat);
-			return (error_msg("Invalid line in the file"), false);
+            ft_putstr_fd("Error\n", 2);
+            ft_putstr_fd("Invalid line in the file: ", 2);
+            ft_putendl_fd(line, 2);
+			return (false);
 		}
 		free_mat(mat);
 		head = head->next;

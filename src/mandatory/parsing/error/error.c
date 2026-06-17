@@ -40,4 +40,5 @@ void	for_walls(int line, int col)
 	ft_putchar_fd('[', 2);
 	ft_putnbr_fd(col, 2);
 	ft_putendl_fd("]", 2);
+	ft_putendl_fd("\nNote: this suggestion can unprecise \nif the value encountered is different from \"0\"", 2);
 }

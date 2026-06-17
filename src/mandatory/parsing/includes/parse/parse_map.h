@@ -27,7 +27,7 @@ typedef struct s_map
 	int		height;
 }			t_map;
 
-bool		is_map_line(char *line);
+bool		is_map_line(char *line, char *obliged);
 bool		check_map(t_file *file, t_map *map);
 int			count_map_lines(t_file *file);
 bool		after_map(t_list *map);

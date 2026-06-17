@@ -15,8 +15,5 @@
 
 # include "src/mandatory/parsing/includes/core/cub3d_parsing.h"
 # include "src/bonus/parsing_bonus/includes_bonus/parse/parse_map_bonus.h"
-# include "src/bonus/parsing_bonus/includes_bonus/parse/parse_texture_bonus.h"
-
-bool	check_map_bonus(t_file *file, t_map *map);
 
 #endif

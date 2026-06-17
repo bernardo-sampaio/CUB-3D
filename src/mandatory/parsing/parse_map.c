@@ -23,7 +23,7 @@ static bool	load_grid(t_file *file, t_map *map)
 	head = file->lines;
 	while (head)
 	{
-		if (is_map_line((char *)head->content))
+		if (is_map_line((char *)head->content, "01NSEW "))
 		{
 			map->grid[index] = ft_strdup((char *)head->content);
 			if (map->grid[index] == NULL)
@@ -124,6 +124,8 @@ bool	check_map(t_file *file, t_map *map)
 	if (map->height <= 3 && map->width <= 3)
 		return (error_msg("Map too small"), false);
 	if (normalize_grid(map) == false)
+		return (false);
+	if (is_valid_char(map) == false)
 		return (false);
 	if (map->tiles.player != 1)
 	{
