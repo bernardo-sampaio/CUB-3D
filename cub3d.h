@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:38:44 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/12 12:12:11 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 16:41:20 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@ typedef struct  s_text
     int bpp;
 } t_text;
 
+typedef struct s_render
+{
+    t_text  *text;
+    double  tex_pos;
+    double  step;
+    int     tex_x;
+    int color;
+    int tex_y;
+    int x;
+    int y;
+}   t_render;
 
 typedef struct s_player
 {
@@ -86,6 +97,7 @@ typedef struct s_cub
     int		w;
 	int		h;
     t_player *player;
+    t_render    *render;
     t_texture *texture;
     t_color *color;
     t_text  *north;

@@ -33,6 +33,7 @@ void    inicialize_south(t_player *player, int x, int y)
     player->plane_y = 0.0;
     player->map[y][x] = '0';
 }
+
 void    inicialize_weast(t_player *player, int x, int y)
 {
     player->pos_x = (double)x + 0.5;
@@ -43,6 +44,7 @@ void    inicialize_weast(t_player *player, int x, int y)
     player->plane_y = -0.66;
     player->map[y][x] = '0';
 }
+
 void    inicialize_east(t_player *player, int x, int y)
 {
     player->pos_x = (double)x + 0.5;
@@ -53,6 +55,7 @@ void    inicialize_east(t_player *player, int x, int y)
     player->plane_y = 0.66;
     player->map[y][x] = '0';
 }
+
 void    initialize_player(t_player *player)
 {
     int y;

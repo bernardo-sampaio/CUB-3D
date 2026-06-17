@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 20:48:39 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/16 20:48:41 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 17:29:11 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	free_texture(t_texture *texture_dir)
 
 void	free_color(t_color *color)
 {
-	free(color->floor_rgb);
-	free(color->ceiling_rgb);
+	free(color->f_rgb);
+	free(color->c_rgb);
 }
 
 void	free_structs(t_cub3d *cub3d)

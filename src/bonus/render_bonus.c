@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:19:22 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/17 11:18:21 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 17:29:11 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int    render_frame(t_cub_bonus *cub)
         y = 0;
         while (y < cub->player->drawstart)
         {
-                put_pixel_image(cub, x, y, rgb_to_hex(cub->color->ceiling_rgb[0], cub->color->ceiling_rgb[1], cub->color->ceiling_rgb[2]));
+                put_pixel_image(cub, x, y, rgb_to_hex(cub->color->c_rgb[0], cub->color->c_rgb[1], cub->color->c_rgb[2]));
                 y++;
         }
         while (y <= cub->player->drawend)
@@ -148,7 +148,7 @@ int    render_frame(t_cub_bonus *cub)
         }
         while (y < HEIGHT)
         {
-            put_pixel_image(cub, x, y, rgb_to_hex(cub->color->floor_rgb[0], cub->color->floor_rgb[1], cub->color->floor_rgb[2]));
+            put_pixel_image(cub, x, y, rgb_to_hex(cub->color->f_rgb[0], cub->color->f_rgb[1], cub->color->f_rgb[2]));
             y++;
         }
         x++;
