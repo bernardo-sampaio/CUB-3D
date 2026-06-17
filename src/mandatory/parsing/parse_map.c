@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:07:42 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/21 14:45:40 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 11:33:26 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static bool	tell_ma_gossip(t_map *map)
 					|| (j > 0 && map->grid[i][j - 1] == ' ')
 					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
 					|| (i > 0 && map->grid[i - 1][j] == ' '))
-					return (error_msg("My neighbor is gossiper"), false);
+					return (for_gossip(map->grid[i][j], i, j), false);
 			}
 			j++;
 		}
@@ -102,7 +102,10 @@ static bool	is_surrounded_by_walls(t_map *map)
 			if (i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
 			{
 				if (map->grid[i][j] != '1' && map->grid[i][j] != ' ')
-					return (error_msg("Map not closed by walls"), false);
+				{
+					for_walls(i, j);
+					return (false);
+				}
 			}
 			j++;
 		}

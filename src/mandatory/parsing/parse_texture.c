@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 19:37:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/04 16:13:15 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:25:00 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ static bool	helper_validation(char **mat, char *chars, t_texture *texture_dir)
 		if (validate_extension(pathname, ".xpm") == false)
 		{
 			free(pathname);
-			return (helper("Invalid file extension. Expected .xpm", mat),
-				false);
+			return (false);
 		}
 		if (open_file(pathname) == false)
 			return (free(pathname), helper(NULL, mat), false);

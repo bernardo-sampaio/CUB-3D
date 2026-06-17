@@ -6,7 +6,7 @@
 /*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 18:33:32 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/04 15:34:44 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/16 10:12:14 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,8 @@ static bool	extract_ident(t_file *file, t_color *color)
 			return (free(chars), false);
 		head = head->next;
 	}
-	if (ft_strlen(chars) < 2)
-	{
-		free(chars);
-		error_msg("Miss color in the file [F or C]\n");
-		return (false);
-	}
+	if (how_many_colors(chars) == false)
+		return (free(chars), false);
 	free(chars);
 	return (true);
 }

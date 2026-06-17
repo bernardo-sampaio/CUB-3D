@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:07:42 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/16 10:12:11 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:22:14 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,24 @@ static bool	tell_ma_gossip(t_map *map)
 		{
 			if (map->grid[i][j] == '0' || map->grid[i][j] == 'N'
 				|| map->grid[i][j] == 'S' || map->grid[i][j] == 'E'
-				|| map->grid[i][j] == 'W')
+				|| map->grid[i][j] == 'W' || map->grid[i][j] == 'D')
 			{
 				if ((j <= map->width - 1 && map->grid[i][j + 1] == ' ')
 					|| (j > 0 && map->grid[i][j - 1] == ' ')
 					|| (i <= map->height - 1 && map->grid[i + 1][j] == ' ')
 					|| (i > 0 && map->grid[i - 1][j] == ' '))
-					return (error_msg("My neighbor is gossiper"), false);
+				{
+					ft_putstr_fd("Error\nThe character [", 2);
+					ft_putchar_fd(map->grid[i][j], 2);
+					ft_putendl_fd("] is next to a space", 2);
+					ft_putstr_fd("check position: [", 2);
+					ft_putnbr_fd(i, 2);
+					ft_putchar_fd(']', 2);
+					ft_putchar_fd('[', 2);
+					ft_putnbr_fd(j, 2);
+					ft_putendl_fd("]", 2);
+					return (false);
+				}
 			}
 			j++;
 		}

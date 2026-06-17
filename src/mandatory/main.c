@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/12 12:12:38 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:21:58 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int main(int ac, char **av)
     if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
     if (validate_extension((av[1]), ".cub") == false)
-		return (error_msg("Invalid file extension. Expected .cub\n"), 1);
+		return (1);
 	ft_memset(cub.cub3d, 0, sizeof(t_cub3d));
 	if (check_file(av[1], &cub.cub3d->file) == false)
 		return (ft_lstclear(&cub.cub3d->file.lines, free), 1);
