@@ -65,9 +65,9 @@ LIBFT_DIR_BONUS   = src/bonus/parsing_bonus/libft
 
 LIBFT_BONUS       = $(LIBFT_DIR_BONUS)/libft.a
 
-CFLAGS_BONUS = -Wall -Wextra -Werror -Isrc/bonus/parsing_bonus/includes_bonus -Isrc/bonus/parsing_bonus/libft -I./
+CFLAGS_BONUS = $(CFLAGS) -Isrc/bonus/parsing_bonus/includes_bonus
 
-HEADER_BONUS = cub3d_bonus.h src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h
+HEADER_BONUS = $(HEADER)  cub3d_bonus.h src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h 
 
 OBJS_BONUS = \
 	src/bonus/main_bonus.o \
@@ -81,17 +81,19 @@ OBJS_BONUS = \
 	src/bonus/raycast_bonus.o \
 	src/bonus/player_position_bonus.o \
 	src/bonus/rotate_player_bonus.o \
-	src/bonus/parsing_bonus/get_next_line.o \
-	src/bonus/parsing_bonus/parse_file_bonus.o \
-	src/bonus/parsing_bonus/parse_color_bonus.o \
-	src/bonus/parsing_bonus/parse_color_utils_bonus.o \
-	src/bonus/parsing_bonus/parse_texture_bonus.o \
-	src/bonus/parsing_bonus/parse_texture_utils_bonus.o \
-	src/bonus/parsing_bonus/parse_map_bonus.o \
+	src/mandatory/parsing/get_next_line.o \
+	src/mandatory/parsing/parse_file.o \
+	src/mandatory/parsing/parse_color.o \
+	src/mandatory/parsing/parse_color_utils.o \
+	src/mandatory/parsing/parse_texture.o \
+	src/mandatory/parsing/parse_texture_utils.o \
+	src/mandatory/parsing/parse_map.o \
+	src/mandatory/parsing/parse_map_utils.o \
+	src/mandatory/parsing/error/error.o \
+	src/mandatory/parsing/utils/utils.o \
+	src/mandatory/parsing/utils/cleanup.o \
 	src/bonus/parsing_bonus/parse_map_utils_bonus.o \
-	src/bonus/parsing_bonus/error_bonus/error_bonus.o \
-	src/bonus/parsing_bonus/utils_bonus/utils_bonus.o \
-	src/bonus/parsing_bonus/utils_bonus/cleanup_bonus.o
+	src/bonus/parsing_bonus/parse_map_bonus.o 
 
 
 #**************************************************************************#
@@ -104,13 +106,7 @@ OBJS_BONUS = \
 
 all: $(LIBFT) $(MLX) $(NAME)
 
-bonus: $(LIBFT_BONUS) $(MLX) $(NAME_BONUS)
-
-$(OBJS): %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(OBJS_BONUS): %.o: %.c
-	$(CC) $(CFLAGS_BONUS) -c -o $@ $<
+bonus: $(LIBFT) $(MLX) $(NAME_BONUS)
 
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
@@ -119,10 +115,6 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) bonus -C $(LIBFT_DIR)
 
-$(LIBFT_BONUS):
-	@$(MAKE) -C $(LIBFT_DIR_BONUS)
-	@$(MAKE) bonus -C $(LIBFT_DIR_BONUS)
-
 $(OBJS): $(HEADER)
 
 $(OBJS_BONUS): $(HEADER_BONUS)
@@ -130,18 +122,16 @@ $(OBJS_BONUS): $(HEADER_BONUS)
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
 
-$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT_BONUS)
-	$(CC) $(CFLAGS_BONUS) $(OBJS_BONUS) $(LIBFT_BONUS) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME_BONUS)
+$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
+	$(CC) $(CFLAGS_BONUS) $(OBJS_BONUS) $(LIBFT) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME_BONUS)
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
 	@$(MAKE) clean -C $(LIBFT_DIR)
-	@$(MAKE) clean -C $(LIBFT_DIR_BONUS)
 
 fclean: clean
 	$(RM) $(NAME) $(NAME_BONUS)
 	@$(MAKE) fclean -C $(LIBFT_DIR)
-	@$(MAKE) fclean -C $(LIBFT_DIR_BONUS)
 
 run: all clean
 	@clear

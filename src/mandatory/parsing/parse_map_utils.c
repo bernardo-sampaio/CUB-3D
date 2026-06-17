@@ -21,7 +21,7 @@ bool	is_map_line(char *line)
 		i++;
 	if (!line[i])
 		return (false);
-	while (line[i] && ft_strchr("01NSEWD ", line[i]))
+	while (line[i] && ft_strchr("01NSEW ", line[i]))
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
 		return (true);
@@ -77,32 +77,4 @@ void	copy_grid(t_map *map, int index, char *normalized_line)
 	normalized_line[map->width] = '\n';
 	free(map->grid[index]);
 	map->grid[index] = normalized_line;
-}
-
-bool	is_valid_char(t_map *map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (map->grid[i][j])
-		{
-			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
-				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
-				map->tiles.player++;
-			else if (map->grid[i][j] != '0' && map->grid[i][j] != '1'
-				&& map->grid[i][j] != '\n' && map->grid[i][j] != ' ')
-			{
-				free_mat(map->grid);
-				map->grid = NULL;
-				return (error_msg("Invalid char in map"), false);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (true);
 }

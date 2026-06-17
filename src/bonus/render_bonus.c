@@ -22,27 +22,37 @@ void load_textures(t_cub_bonus *cub, t_text *tex, char *path)
 void    init_textures(t_cub_bonus *cub, t_texture *texture)
 {
     int i;
-    texture->door[0] = ft_strdup("./sprites/door_00.xpm");
-    texture->door[1] = ft_strdup("./sprites/door_02.xpm");
-    texture->door[2] = ft_strdup("./sprites/door_04.xpm");
-    texture->door[3] = ft_strdup("./sprites/door_06.xpm");
-    texture->door[4] = ft_strdup("./sprites/door_10.xpm");
-    texture->weap = ft_strdup("./sprites/weapon1.xpm");
+    char	*door[5];
+    char	*weap;
+
+    door[0] = ft_strdup("./sprites/door_00.xpm");
+    door[1] = ft_strdup("./sprites/door_02.xpm");
+    door[2] = ft_strdup("./sprites/door_04.xpm");
+    door[3] = ft_strdup("./sprites/door_06.xpm");
+    door[4] = ft_strdup("./sprites/door_10.xpm");
+    weap = ft_strdup("./sprites/weapon1.xpm");
     
     load_textures(cub, cub->north, texture->north_text);
     load_textures(cub, cub->south, texture->south_text);
     load_textures(cub, cub->east, texture->east_text);
     load_textures(cub, cub->west, texture->west_text);
-    load_textures(cub, cub->weap, texture->weap);
+    load_textures(cub, cub->weap, weap);
     i = 0;
     while(i < 5)
     {
         cub->door[i] = malloc(sizeof(t_text));
         if (!cub->door[i])
+        {
+            while (i < 5)
+                free(door[i++]);
+            free(weap);
             close_game(cub);
-        load_textures(cub, cub->door[i], texture->door[i]);
+        }
+        load_textures(cub, cub->door[i], door[i]);
+        free(door[i]);
         i++;  
     }
+    free(weap);
 }
 
 t_text *get_texture(t_cub_bonus *cub)

@@ -58,12 +58,6 @@ int     close_game(t_cub_bonus *cub)
         free(cub->door[i]);
         i++;
     }
-    free(cub->cub3d->texture.door[0]);
-    free(cub->cub3d->texture.door[1]);
-    free(cub->cub3d->texture.door[2]);
-    free(cub->cub3d->texture.door[3]);
-    free(cub->cub3d->texture.door[4]);
-    free(cub->cub3d->texture.weap);
     mlx_destroy_image(cub->mlx, cub->weap->img);
     mlx_destroy_image(cub->mlx, cub->north->img);
     mlx_destroy_image(cub->mlx, cub->south->img);
@@ -110,7 +104,7 @@ int main(int ac, char **av)
 		return (free_structs(cub.cub3d), 1);
 	if (check_color(&cub.cub3d->file, &cub.cub3d->color) == false)
 		return (free_structs(cub.cub3d), 1);
-	if (check_map(&cub.cub3d->file, &cub.cub3d->map) == false)
+	if (check_map_bonus(&cub.cub3d->file, &cub.cub3d->map) == false)
 		return (free_structs(cub.cub3d), 1);
     player.map = cub.cub3d->map.grid;
     player.map_height = cub.cub3d->map.height;

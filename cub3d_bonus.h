@@ -14,7 +14,7 @@
 # define CUB3D_BONUS_H
 
 # include"minilibx-linux/mlx.h"
-#include "src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h"
+# include "src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h"
 # include<fcntl.h>
 # include<math.h> 
 

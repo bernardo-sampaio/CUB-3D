@@ -13,23 +13,10 @@
 #ifndef CUB3D_PARSING_BONUS_H
 # define CUB3D_PARSING_BONUS_H
 
-# include "error/error_bonus.h"
-# include "get_next_line/get_next_line.h"
-# include "libft.h"
-# include "parse/parse_file_bonus.h"
-# include "parse/parse_color_bonus.h"
-# include "parse/parse_map_bonus.h"
-# include "parse/parse_texture_bonus.h"
-# include "utils/utils_bonus.h"
-# include <errno.h>
-# include <stdio.h>
+# include "src/mandatory/parsing/includes/core/cub3d_parsing.h"
+# include "src/bonus/parsing_bonus/includes_bonus/parse/parse_map_bonus.h"
+# include "src/bonus/parsing_bonus/includes_bonus/parse/parse_texture_bonus.h"
 
-typedef struct s_cub3d
-{
-	t_file		file;
-	t_texture	texture;
-	t_color		color;
-	t_map		map;
-}				t_cub3d;
+bool	check_map_bonus(t_file *file, t_map *map);
 
 #endif

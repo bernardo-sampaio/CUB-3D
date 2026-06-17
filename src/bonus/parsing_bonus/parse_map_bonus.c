@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/cub3d_parsing_bonus.h"
+# include "src/bonus/parsing_bonus/includes_bonus/core/cub3d_parsing_bonus.h"
 
 static bool	load_grid(t_file *file, t_map *map)
 {
@@ -23,7 +23,7 @@ static bool	load_grid(t_file *file, t_map *map)
 	head = file->lines;
 	while (head)
 	{
-		if (is_map_line((char *)head->content))
+		if (is_map_line_bonus((char *)head->content))
 		{
 			map->grid[index] = ft_strdup((char *)head->content);
 			if (map->grid[index] == NULL)
@@ -33,7 +33,7 @@ static bool	load_grid(t_file *file, t_map *map)
 			index++;
 		}
 		else if (index > 0)
-			if (after_map(head) == false)
+			if (after_map_bonus(head) == false)
 				return (false);
 		head = head->next;
 	}
@@ -60,7 +60,7 @@ static bool	normalize_grid(t_map *map)
 	return (true);
 }
 
-static bool	tell_ma_gossip(t_map *map)
+static bool	tell_ma_gossip_bonus(t_map *map)
 {
 	int	i;
 	int	j;
@@ -122,9 +122,9 @@ static bool	is_surrounded_by_walls(t_map *map)
 	return (true);
 }
 
-bool	check_map(t_file *file, t_map *map)
+bool	check_map_bonus(t_file *file, t_map *map)
 {
-	map->height = count_map_lines(file);
+	map->height = count_map_lines_bonus(file);
 	if (map->height == 0)
 		return (error_msg("No map found in the file"), false);
 	if (load_grid(file, map) == false)
@@ -133,8 +133,6 @@ bool	check_map(t_file *file, t_map *map)
 		return (error_msg("Map too small"), false);
 	if (normalize_grid(map) == false)
 		return (false);
-	if (is_valid_char(map) == false)
-		return (false);
 	if (map->tiles.player != 1)
 	{
 		error_msg("Map must contain exactly one player");
@@ -142,7 +140,7 @@ bool	check_map(t_file *file, t_map *map)
 	}
 	if (is_surrounded_by_walls(map) == false)
 		return (false);
-	if (tell_ma_gossip(map) == false)
+	if (tell_ma_gossip_bonus(map) == false)
 		return (false);
 	return (true);
 }

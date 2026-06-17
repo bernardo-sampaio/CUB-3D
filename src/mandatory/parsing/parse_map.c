@@ -125,8 +125,6 @@ bool	check_map(t_file *file, t_map *map)
 		return (error_msg("Map too small"), false);
 	if (normalize_grid(map) == false)
 		return (false);
-	if (is_valid_char(map) == false)
-		return (false);
 	if (map->tiles.player != 1)
 	{
 		error_msg("Map must contain exactly one player");
