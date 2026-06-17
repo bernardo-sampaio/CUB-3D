@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 19:37:38 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/17 11:26:07 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:39:54 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static bool	helper_validation(char **mat, char *chars, t_texture *texture_dir)
 		if (validate_extension(pathname, ".xpm") == false)
 		{
 			free(pathname);
+			if (mat)
+				free_mat(mat);
 			return (false);
 		}
 		if (open_file(pathname) == false)
@@ -64,7 +66,7 @@ static bool	extract_path(t_file *file, t_texture *texture_dir)
 	{
 		mat = ft_split((char *)head->content, ' ');
 		if (helper_validation(mat, chars, texture_dir) == false)
-			return (free(chars), free_mat(mat), false);
+			return (free(chars), false);
 		free_mat(mat);
 		head = head->next;
 	}
