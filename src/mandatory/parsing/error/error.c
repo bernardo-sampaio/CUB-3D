@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:27:01 by ealbino           #+#    #+#             */
-/*   Updated: 2026/06/12 11:58:55 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/18 11:58:57 by ealbino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	for_walls(int line, int col)
 	ft_putchar_fd('[', 2);
 	ft_putnbr_fd(col, 2);
 	ft_putendl_fd("]", 2);
-	ft_putendl_fd("\nNote: this suggestion can unprecise \nif the value encountered is different from \"0\"", 2);
+	ft_putendl_fd("\nNote: this suggestion can unprecise 
+	\nif the value encountered is different from \"0\"", 2);
 }

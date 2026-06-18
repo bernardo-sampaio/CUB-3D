@@ -106,4 +106,3 @@ bool	is_valid_char(t_map *map)
 	}
 	return (true);
 }
-
