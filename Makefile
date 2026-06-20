@@ -6,7 +6,7 @@
 #    By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 22:25:20 by ealbino           #+#    #+#              #
-#    Updated: 2026/06/17 11:22:02 by bsampaio         ###   ########.fr        #
+#    Updated: 2026/06/19 10:59:05 by bsampaio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,10 @@ HEADER       = cub3d.h src/mandatory/parsing/includes/core/cub3d_parsing.h
 
 OBJS = \
 	src/mandatory/main.o \
+	src/mandatory/game.o \
 	src/mandatory/player_position.o \
 	src/mandatory/render.o\
+	src/mandatory/render_utils.o\
 	src/mandatory/dda.o \
 	src/mandatory/move_player.o \
 	src/mandatory/hooks.o \
@@ -72,6 +74,7 @@ HEADER_BONUS = $(HEADER)  cub3d_bonus.h src/bonus/parsing_bonus/includes_bonus/c
 OBJS_BONUS = \
 	src/bonus/main_bonus.o \
 	src/bonus/render_bonus.o \
+	src/bonus/render_utils_bonus.o \
 	src/bonus/hooks_bonus.o \
 	src/bonus/move_player_bonus.o \
 	src/bonus/minimap_bonus.o \

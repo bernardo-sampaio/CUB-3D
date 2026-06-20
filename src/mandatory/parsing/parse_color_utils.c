@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealbino <ealbino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:20:26 by ealbino           #+#    #+#             */
-/*   Updated: 2026/05/27 12:20:27 by ealbino          ###   ########.fr       */
+/*   Updated: 2026/06/17 17:29:11 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	init_color(t_color *color, char *ident, char **content)
 {
 	if (ident[0] == 'F')
 	{
-		if (color->floor_rgb == NULL)
-			color->floor_rgb = ft_calloc(3, sizeof(int));
-		color->floor_rgb[0] = ft_atoi(content[0]);
-		color->floor_rgb[1] = ft_atoi(content[1]);
-		color->floor_rgb[2] = ft_atoi(content[2]);
+		if (color->f_rgb == NULL)
+			color->f_rgb = ft_calloc(3, sizeof(int));
+		color->f_rgb[0] = ft_atoi(content[0]);
+		color->f_rgb[1] = ft_atoi(content[1]);
+		color->f_rgb[2] = ft_atoi(content[2]);
 	}
 	if (ident[0] == 'C')
 	{
-		if (color->ceiling_rgb == NULL)
-			color->ceiling_rgb = ft_calloc(3, sizeof(int));
-		color->ceiling_rgb[0] = ft_atoi(content[0]);
-		color->ceiling_rgb[1] = ft_atoi(content[1]);
-		color->ceiling_rgb[2] = ft_atoi(content[2]);
+		if (color->c_rgb == NULL)
+			color->c_rgb = ft_calloc(3, sizeof(int));
+		color->c_rgb[0] = ft_atoi(content[0]);
+		color->c_rgb[1] = ft_atoi(content[1]);
+		color->c_rgb[2] = ft_atoi(content[2]);
 	}
 }
 
