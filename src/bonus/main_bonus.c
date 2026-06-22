@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:03:52 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/19 11:02:53 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/22 11:23:37 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_parse(t_cub_bonus *cub, t_player *player, char *av[])
 	cub->color = &cub->cub3d->color;
 	cub->player->weapon_timer = 0;
 	cub->key_close = 0;
-	return (1);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -101,7 +101,8 @@ int	main(int ac, char **av)
 	cub.cub3d = &cub3d;
 	if (ac != 2)
 		return (error_msg("Usage: ./cub3d map.cub\n"), 1);
-	ft_parse(&cub, &player, av);
+	if (ft_parse(&cub, &player, av))
+		return (1);
 	initialize_player(&player);
 	cub.mlx = mlx_init();
 	ft_game(&cub);
