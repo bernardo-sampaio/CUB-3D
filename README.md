@@ -28,6 +28,7 @@ The program reads a map defined in a `.cub` file, generates a three-dimensional 
 * Wall collision detection.
 * Wall texture mapping.
 * Program termination through the window close button or ESC key.
+* Sprites Animations
 
 ---
 
@@ -139,8 +140,11 @@ All dynamically allocated resources are properly released before program termina
 * Permadi Raycasting Tutorial
   https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents
 
-* Learn OpenGL (general graphics concepts)
-  https://learnopengl.com
+* Manual do Codigo
+  https://youtu.be/J5K8qMCB-7o?si=h4R7nD9s6YK5RG32
+
+* Notion Elaborated by fnicolau About Raycasting
+  https://www.notion.so/Cub3D-1b6cb767027a80818eb7d44a0011d5b9?source=copy_link
 
 ### Use of Artificial Intelligence
 

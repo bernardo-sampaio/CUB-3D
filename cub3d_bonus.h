@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:34:33 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/19 11:03:52 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/26 12:07:55 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define SCALE_PX 8
+# define SCALE_PX 5
 # define OFFSET_X 10
 # define OFFSET_Y 10
 # define WIDTH 1920

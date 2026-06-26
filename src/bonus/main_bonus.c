@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 09:03:52 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/22 11:23:37 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:55:00 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_game(t_cub_bonus *cub)
 	if (!cub->mlx)
 	{
 		free_structs(cub->cub3d);
+		error_msg("Failed to load MLX connection.");
 		exit (1);
 	}
 	init_textures(cub, &cub->cub3d->texture);
