@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:17:16 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/26 13:54:36 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/07/02 08:43:23 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int ac, char **av)
 	cub.render = &render;
 	cub.cub3d = &cub3d;
 	if (ac != 2)
-		return (error_msg("Usage: ./cub3d map.ber\n"), 1);
+		return (error_msg("Usage: ./cub3d map.cub\n"), 1);
 	if (ft_parse(&cub, &player, av))
 		return (1);
 	initialize_player(&player);

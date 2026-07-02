@@ -34,9 +34,9 @@ t_text	*get_texture(t_cub *cub)
 	if (cub->player->side == 0)
 	{
 		if (cub->player->raydir_x > 0)
-			return (cub->west);
-		else
 			return (cub->east);
+		else
+			return (cub->west);
 	}
 	else
 	{

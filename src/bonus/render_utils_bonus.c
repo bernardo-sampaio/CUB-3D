@@ -6,7 +6,7 @@
 /*   By: bsampaio <bsampaio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:55:35 by bsampaio          #+#    #+#             */
-/*   Updated: 2026/06/19 11:01:15 by bsampaio         ###   ########.fr       */
+/*   Updated: 2026/07/02 08:43:59 by bsampaio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ t_text	*get_texture(t_cub_bonus *cub)
 	if (cub->player->side == 0)
 	{
 		if (cub->player->raydir_x > 0)
-			return (cub->west);
-		else
 			return (cub->east);
+		else
+			return (cub->west);
 	}
 	else
 	{
